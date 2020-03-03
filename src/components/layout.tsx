@@ -1,6 +1,8 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Header } from './header';
+import { GlobalStyle, theme } from 'styles';
+import { ThemeProvider } from 'styled-components';
 
 export const Layout = ({ children }: any) => {
   const data = useStaticQuery(graphql`
@@ -14,15 +16,10 @@ export const Layout = ({ children }: any) => {
   `);
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
+      <div>
         <main>{children}</main>
         <footer>
           © {new Date().getFullYear()}, Built with
@@ -30,6 +27,6 @@ export const Layout = ({ children }: any) => {
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-    </>
+    </ThemeProvider>
   );
 };
