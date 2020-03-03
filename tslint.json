@@ -1,0 +1,18 @@
+{
+  "rulesDirectory": ["tslint-plugin-prettier"],
+  "extends": ["tslint:latest", "tslint-react", "tslint-config-prettier"],
+  "rules": {
+    "prettier": true,
+    "no-empty-interface": true,
+    "no-default-import": true,
+    "no-duplicate-imports": true,
+    "no-require-imports": true,
+    "interface-name": true,
+    "no-empty": true,
+    "no-duplicate-variable": true,
+    "no-async-without-await": true,
+    "no-unused-expression": true,
+    "no-unused-variable": true,
+    "triple-equals": true
+  }
+}
