@@ -5,7 +5,7 @@
   </a>
   &nbsp;
   <a href="https://styled-components.com">
-    <img alt="Styled Components" src="https://styled-components.com/logo.png" width="60" height="60" />
+    <img alt="Styled Components" src="https://styled-components.com/favicon.png" width="60" height="60" />
   </a>
     &nbsp;
   <a href="https://www.https://https://www.typescriptlang.org">
