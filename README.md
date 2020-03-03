@@ -8,7 +8,7 @@
     <img alt="Styled Components" src="https://styled-components.com/favicon.png" width="60" height="60" />
   </a>
     &nbsp;
-  <a href="https://www.https://https://www.typescriptlang.org">
+  <a href="https://www.typescriptlang.org">
     <img alt="TypeScript" src="src/images/typescript.svg" width="60" height="60" />
   </a>
       &nbsp;
@@ -22,3 +22,16 @@
 </p>
 
 ---
+
+Hi, my name is **David Zlobinskyy**.
+
+I try to build quality software and travel the world.
+
+Some people call me **zlobi**.
+
+This is my portfolio website.
+
+---
+
+1. To download all the required dependencies - run `yarn` in your cli.
+2. To spin up the project in development - run `yarn dev`.
