@@ -4,7 +4,7 @@
     <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" height="60" />
   </a>
   &nbsp;
-  <a href="https://www.https://styled-components.com">
+  <a href="https://styled-components.com">
     <img alt="Styled Components" src="https://styled-components.com/logo.png" width="60" height="60" />
   </a>
     &nbsp;
