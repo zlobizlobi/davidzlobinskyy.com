@@ -33,5 +33,7 @@ This is my portfolio website.
 
 ---
 
-1. To download all the required dependencies - run `yarn` in your cli.
-2. To spin up the project in development - run `yarn dev`.
+Feel free to take any code from here.
+To download all the required dependencies - run `yarn` in your cli.
+
+To spin up the project in development - run `yarn dev`.
