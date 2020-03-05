@@ -10,8 +10,8 @@ export const Header = () => (
           hello
           <span />
         </NavLink>
-        <NavLink to="/work">
-          work
+        <NavLink to="#projects">
+          projects
           <span />
         </NavLink>
         <NavLink to="/contact">

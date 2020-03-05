@@ -35,7 +35,7 @@ export const Developer = styled(Text)`
 
   ${media.md(`
       font-size: 30px;
-      max-width: 100%;
+      max-width: none;
   `)}
 `;
 
@@ -43,6 +43,7 @@ export const Biography = styled(Text)`
   font-size: 16px;
   max-width: 400px;
   margin-top: 30px;
+
   ${media.md(`
     text-align: center;
   `)};
@@ -54,7 +55,7 @@ export const Highlight = styled.a`
   transition: color 0.2s ease;
   cursor: pointer;
   text-decoration: none;
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.secondary};
 
   :hover {
     color: black;

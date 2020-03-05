@@ -1,3 +1,3 @@
 export { media } from './media';
 export { GlobalStyle } from './globalStyle';
-export { theme } from './theme';
+export { darkTheme, lightTheme } from './theme';

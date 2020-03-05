@@ -10,7 +10,7 @@ import {
 import { IconContext } from 'react-icons';
 import { FiLinkedin, FiGithub } from 'react-icons/fi';
 
-export const Hero = () => (
+export const Hero: React.FC = () => (
   <IconContext.Provider
     value={{
       color: 'rgb(211,211,211)',
@@ -22,7 +22,8 @@ export const Hero = () => (
       <Name style={{ marginTop: '20px' }}>some call me zlob,</Name>
       <Developer>I do Frontend Webdevelopment</Developer>
       <Biography>
-        Having 2 years of experience, I like designing & building apps using{' '}
+        Having 2 years of experience, I like designing web-applications &
+        building them using{' '}
         <Highlight href="https://reactjs.org" target="_blank">
           React
         </Highlight>{' '}

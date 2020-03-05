@@ -23,6 +23,9 @@ const IndexPage: React.FC = () => (
       <Greeting>Hi friend 👋,</Greeting>
       <Hero />
     </Section>
+    <Section id="projects">
+      <h2>Work</h2>
+    </Section>
   </Layout>
 );
 

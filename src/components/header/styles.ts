@@ -6,7 +6,7 @@ export const HeaderComponent = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: ${({ theme }) => theme.color.primary};
 `;
 
 export const Nav = styled.nav`
@@ -24,10 +24,10 @@ export const NavList = styled.ul`
 
 export const IconLink = styled(Link)`
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   padding: 15px;
   text-decoration: none;
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.secondary};
 `;
 
 export const NavLink = styled(Link).attrs({
@@ -35,7 +35,7 @@ export const NavLink = styled(Link).attrs({
     opacity: 1,
   },
 })`
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.secondary};
   text-decoration: none;
   font-weight: 500;
   font-size: 14px;
