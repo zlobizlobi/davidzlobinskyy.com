@@ -1,14 +1,28 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import { Layout } from 'components';
+import { Layout, Hero } from 'components';
+import styled from 'styled-components';
+import { media } from 'styles';
+import { Greeting } from '../components/hero/styles';
+
+const Section = styled.section`
+  padding: 25px 15px 0 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+
+  ${media.md(`
+      padding: 40px 0 0 0;
+  `)}
+`;
 
 const IndexPage: React.FC = () => (
   <Layout>
-    {/* <SEO title="Home" /> */}
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
+    <Section>
+      <Greeting>Hi friend 👋,</Greeting>
+      <Hero />
+    </Section>
   </Layout>
 );
 

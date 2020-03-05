@@ -19,7 +19,7 @@ export const Layout = ({ children }: any) => {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Header siteTitle={data.site.siteMetadata.title} />
-      {/* <main>{children}</main> */}
+      <main style={{ marginTop: '50px' }}>{children}</main>
     </ThemeProvider>
   );
 };

@@ -2,16 +2,19 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 
 export const HeaderComponent = styled.header`
-  display: flex;
-  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
 `;
 
 export const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
-  width: 50%;
+  margin: 0 auto;
+  max-width: 900px;
 `;
 
 export const NavList = styled.ul`
@@ -19,13 +22,43 @@ export const NavList = styled.ul`
   display: flex;
 `;
 
-export const NavLink = styled(Link)`
+export const IconLink = styled(Link)`
+  font-weight: 500;
+  font-size: 16px;
+  padding: 15px;
+  text-decoration: none;
   color: ${({ theme }) => theme.color.primary};
-  margin-right: 10px;
+`;
+
+export const NavLink = styled(Link).attrs({
+  activeStyle: {
+    opacity: 1,
+  },
+})`
+  color: ${({ theme }) => theme.color.primary};
   text-decoration: none;
   font-weight: 500;
+  font-size: 14px;
+  padding: 15px;
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
+  position: relative;
 
-  &:last-child {
-    margin: 0;
+  span {
+    width: 0%;
+    height: 1px;
+    background-color: black;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: width 0.2s ease;
+  }
+
+  :hover {
+    opacity: 1;
+
+    > span {
+      width: 100%;
+    }
   }
 `;
