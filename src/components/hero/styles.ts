@@ -42,14 +42,10 @@ export const Developer = styled(Text)`
 export const Biography = styled(Text)`
   font-size: 16px;
   max-width: 400px;
-
-  &:last-child {
-    margin-top: 20px;
-  }
-
+  margin-top: 30px;
   ${media.md(`
     text-align: center;
-  `)}
+  `)};
 `;
 
 export const Highlight = styled.a`
@@ -62,5 +58,14 @@ export const Highlight = styled.a`
 
   :hover {
     color: black;
+  }
+`;
+
+export const IconContainer = styled.div`
+  display: flex;
+  margin-top: 30px;
+
+  > a:first-child {
+    margin-right: 10px;
   }
 `;
