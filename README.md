@@ -7,10 +7,6 @@
   <a href="https://styled-components.com">
     <img alt="Styled Components" src="https://styled-components.com/favicon.png" width="60" height="60" />
   </a>
-    &nbsp;
-  <a href="https://www.typescriptlang.org">
-    <img alt="TypeScript" src="src/images/typescript.svg" width="60" height="60" />
-  </a>
       &nbsp;
   <a href="https://react-spring.io">
     <img alt="TypeScript" src="https://camo.githubusercontent.com/b271ecbaca87f7700f877081eb1b83b4b8c2a223/68747470733a2f2f692e696d6775722e636f6d2f515a6f776e68672e706e67" width="60" height="60" />

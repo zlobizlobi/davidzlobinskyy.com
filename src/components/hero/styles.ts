@@ -8,17 +8,6 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const Greeting = styled(Text)`
-  font-size: 22px;
-  align-self: flex-start;
-  margin-bottom: 45px;
-
-  ${media.md(`
-      font-size: 30px;
-      padding-left: 20px;
-  `)}
-`;
-
 export const Name = styled(Text)`
   font-size: 19px;
 

@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import { ThemeSwitch } from './themeSwitch';
 
 export const Layout: React.FC<{}> = ({ children }) => {
-  const [appTheme, setAppTheme] = useState<boolean>(true);
+  const [appTheme, setAppTheme] = useState<boolean>(false);
 
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {

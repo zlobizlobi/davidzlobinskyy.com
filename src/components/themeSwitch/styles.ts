@@ -4,26 +4,26 @@ export const Button = styled.button`
   padding: 10px;
   border: none;
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.color.secondary};
+  background-color: ${({ theme }) => theme.color.primary};
   display: flex;
   align-items: center;
   position: fixed;
-  top: 10%;
-  right: 10px;
+  top: calc(100vh - 55px);
+  right: 15px;
   box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.1);
   transition: background-color 0.2s ease;
   cursor: pointer;
 
   :hover {
-    background-color: ${({ theme }) => theme.color.primary};
+    background-color: ${({ theme }) => theme.color.secondary};
 
     > svg {
-      color: ${({ theme }) => theme.color.secondary};
+      color: ${({ theme }) => theme.color.primary};
     }
   }
 
   > svg {
     font-size: 20px;
-    color: ${({ theme }) => theme.color.primary};
+    color: ${({ theme }) => theme.color.secondary};
   }
 `;
