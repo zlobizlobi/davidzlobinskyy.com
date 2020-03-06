@@ -69,6 +69,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Jost', sans-serif;
         scroll-behavior: smooth;
         background-color: ${({ theme }) => theme.color.body};
+        overflow-x: hidden;
     }
 
     button, textarea, input {
