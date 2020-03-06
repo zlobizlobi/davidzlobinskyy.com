@@ -5,8 +5,8 @@ import { media } from 'styles';
 import { graphql, useStaticQuery } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
 import SliderComponent from 'react-slick';
+import { getItemFromImage } from 'utils';
 import 'slick-carousel/slick/slick.css';
-// import 'slick-carousel/slick/slick-theme.css';
 
 var carouselSettings = {
   autoplay: true,
@@ -14,12 +14,13 @@ var carouselSettings = {
   infinite: true,
   cssEase: 'ease-in-out',
   centerMode: true,
-  centerPadding: '5px',
+  centerPadding: '2.5px',
   arrows: false,
   pauseOnHover: true,
   slidesToScroll: 2,
   slidesToShow: 4.2,
   swipeToSlide: true,
+  accessibility: true,
 };
 
 const Slider = styled(SliderComponent)`
@@ -114,31 +115,8 @@ const IndexPage: React.FC = () => {
   `);
 
   const {
-    allFile: { nodes },
+    allFile: { nodes: images },
   } = data;
-
-  const images = nodes.slice(1, nodes.length);
-
-  const getHref = (src: string) => {
-    const splittedArray = src.split('/');
-
-    const imageReference = splittedArray[splittedArray.length - 1];
-
-    switch (imageReference) {
-      case 'iculture.png':
-        return 'https://iculture.nl';
-      case 'foleon.png':
-        return 'https://app.foleon.com';
-      case 'lenny.png':
-        return 'https://lenny.tattoo';
-      case 'tatjana.png':
-        return 'https://tatjananeufeld.com';
-      case 'young-socials.png':
-        return 'https://young-socials.nl';
-      default:
-        return 'https://bestel.simpel.nl/sim-only';
-    }
-  };
 
   return (
     <Layout>
@@ -147,26 +125,46 @@ const IndexPage: React.FC = () => {
         <Hero />
       </Section>
       <Section id="projects">
-        <Heading>See my work</Heading>
+        {/* <Heading>See my work</Heading>
         <SubHeading>
           hover over the cards to learn more about the projects
-        </SubHeading>
+        </SubHeading> */}
         <FlexContainer>
           {images.map((image: IImage) => {
-            const href = getHref(image.childImageSharp.fluid.src);
+            const { href, workInformation } = getItemFromImage(
+              image.childImageSharp.fluid.src
+            );
+
+            if (href === 'favicon') {
+              return null;
+            }
+
             return (
               <Anchor href={href} key={image.id} target="_blank">
-                <WorkItem imgSrc={image.childImageSharp.fluid} />
+                <WorkItem
+                  imgSrc={image.childImageSharp.fluid}
+                  workInformation={workInformation}
+                />
               </Anchor>
             );
           })}
         </FlexContainer>
         <Slider {...carouselSettings}>
           {images.map((image: IImage) => {
-            const href = getHref(image.childImageSharp.fluid.src);
+            const { href, workInformation } = getItemFromImage(
+              image.childImageSharp.fluid.src
+            );
+
+            if (href === 'favicon') {
+              return null;
+            }
+
             return (
               <Anchor href={href} key={image.id} target="_blank">
-                <WorkItem imgSrc={image.childImageSharp.fluid} />
+                <WorkItem
+                  imgSrc={image.childImageSharp.fluid}
+                  workInformation={workInformation}
+                />
               </Anchor>
             );
           })}

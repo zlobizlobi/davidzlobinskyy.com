@@ -8,11 +8,21 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://www.davidzlobinskyy.com',
+        sitemap: 'https://www.davidzlobinskyy.com/sitemap.xml',
+        policy: [{ userAgent: '*', allow: ['/', '/contact'] }],
+      },
+    },
     {
       resolve: 'gatsby-plugin-root-import',
       options: {
         components: path.join(__dirname, 'src/components'),
         styles: path.join(__dirname, 'src/styles'),
+        utils: path.join(__dirname, 'src/utils'),
       },
     },
     {

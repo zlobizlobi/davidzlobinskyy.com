@@ -1,0 +1,1 @@
+export { getItemFromImage } from './getItemFromImage';
