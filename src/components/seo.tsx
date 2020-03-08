@@ -28,6 +28,14 @@ export const SEO = ({ description, lang, meta, title }: any) => {
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
+          name: 'mobile-web-app-capable',
+          content: 'yes',
+        },
+        {
+          name: `apple-mobile-web-app-capable`,
+          content: `yes`,
+        },
+        {
           name: `description`,
           content: metaDescription,
         },

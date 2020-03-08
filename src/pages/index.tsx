@@ -7,6 +7,7 @@ import { FluidObject } from 'gatsby-image';
 import SliderComponent from 'react-slick';
 import { getItemFromImage } from 'utils';
 import 'slick-carousel/slick/slick.css';
+import { SEO } from '../components';
 
 var carouselSettings = {
   autoplay: true,
@@ -120,6 +121,13 @@ const IndexPage: React.FC = () => {
 
   return (
     <Layout>
+      <SEO
+        title="Hello"
+        description="My name is David Zlobinskyy. I do Frontend Webdevelopment. Having 2 years of experience, I like designing web-applications &
+        building them using React and Gatsby."
+        lang="en"
+        meta={[]}
+      />
       <Section>
         <Greeting>Hi friend 👋,</Greeting>
         <Hero />
