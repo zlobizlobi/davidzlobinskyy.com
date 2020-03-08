@@ -36,6 +36,10 @@ export const SEO = ({ description, lang, meta, title }: any) => {
           content: `yes`,
         },
         {
+          meta: `theme-color`,
+          content: `#fff`,
+        },
+        {
           name: `description`,
           content: metaDescription,
         },
