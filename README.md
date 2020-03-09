@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
-  <a href="https://www.gatsbyjs.org">
+  <a href="https://www.gatsbyjs.org" outline="none">
     <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" height="60" />
   </a>
   &nbsp;
