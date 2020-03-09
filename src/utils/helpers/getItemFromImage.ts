@@ -29,18 +29,19 @@ export const getItemFromImage = (src: string): IItem => {
     case 'tatjana.png':
       return {
         href: 'https://tatjananeufeld.com',
-        workInformation: 'https://iculture.nl',
+        workInformation:
+          'Gatsby Portofolio Project for Concert Pianist Tatjana Neufeld',
       };
     case 'young-socials.png':
       return {
         href: 'https://young-socials.nl',
-        workInformation:
-          'Small Web Projects for "Young Socials | Video Agency"',
+        workInformation: 'Small Web Project for "Young Socials | Video Agency"',
       };
     case 'enable.jpg':
       return {
         href: 'https://enablethelabel.com',
-        workInformation: 'https://iculture.nl',
+        workInformation:
+          'E-commerce platform for fashion company Enable the Label',
       };
     case 'simpel.png':
       return {

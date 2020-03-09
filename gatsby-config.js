@@ -3,8 +3,8 @@ const path = require('path');
 module.exports = {
   siteMetadata: {
     title: `David Zlobinskyy`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    description: `Hi there, I am David Zlobinskyy - a spirited web developer. This is my personal website.`,
+    author: `@zlobizlobi`,
     siteUrl: `https://davidzlobinskyy.com`,
   },
   plugins: [
@@ -35,7 +35,14 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-tslint`,
+    {
+      resolve: 'gatsby-plugin-tslint',
+      options: {
+        test: /\.(j|t)sx?$/,
+        exclude: /(node_modules|cache|public)/,
+        use: 'tslint-loader',
+      },
+    },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-styled-components`,
     {

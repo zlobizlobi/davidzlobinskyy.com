@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { Layout, Hero, Heading, Text, WorkItem } from 'components';
 import styled from 'styled-components';
 import { media } from 'styles';
@@ -18,7 +18,7 @@ var carouselSettings = {
   centerPadding: '2.5px',
   arrows: false,
   pauseOnHover: true,
-  slidesToScroll: 2,
+  slidesToScroll: 1,
   slidesToShow: 4.2,
   swipeToSlide: true,
   accessibility: true,
@@ -27,7 +27,7 @@ var carouselSettings = {
 const Slider = styled(SliderComponent)`
   display: none;
 
-  ${media.md(`
+  ${media.lg(`
     display: block;
     width: 100%;
     height: auto;
@@ -67,7 +67,7 @@ const FlexContainer = styled.div`
   align-items: center;
   width: 100vw;
 
-  ${media.md(`
+  ${media.lg(`
     display: none;
   `)}
 `;
@@ -101,6 +101,10 @@ interface IImage {
 }
 
 const IndexPage: React.FC = () => {
+  const ref = useRef<HTMLElement>(null!);
+
+  const [fade, setFade] = useState(false);
+
   const data = useStaticQuery(graphql`
     query MyQuery {
       allFile {
@@ -114,6 +118,19 @@ const IndexPage: React.FC = () => {
       }
     }
   `);
+
+  const handleScroll = () => {
+    console.log(ref);
+    if (ref.current.offsetTop === window.pageYOffset) {
+      console.log('hit');
+    }
+    // console.log({ ref: ref.current, window: window.pageYOffset });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  });
 
   const {
     allFile: { nodes: images },
@@ -129,10 +146,12 @@ const IndexPage: React.FC = () => {
         meta={[]}
       />
       <Section>
-        <Greeting>Hi friend 👋,</Greeting>
+        <Greeting>
+          Hi friend <span role="img" aria-label="hand"></span>👋,
+        </Greeting>
         <Hero />
       </Section>
-      <Section id="projects">
+      <Section id="projects" ref={ref}>
         {/* <Heading>See my work</Heading>
         <SubHeading>
           hover over the cards to learn more about the projects
@@ -148,7 +167,12 @@ const IndexPage: React.FC = () => {
             }
 
             return (
-              <Anchor href={href} key={image.id} target="_blank">
+              <Anchor
+                href={href}
+                key={image.id}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <WorkItem
                   imgSrc={image.childImageSharp.fluid}
                   workInformation={workInformation}
@@ -168,7 +192,12 @@ const IndexPage: React.FC = () => {
             }
 
             return (
-              <Anchor href={href} key={image.id} target="_blank">
+              <Anchor
+                href={href}
+                key={image.id}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <WorkItem
                   imgSrc={image.childImageSharp.fluid}
                   workInformation={workInformation}

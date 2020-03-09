@@ -24,11 +24,19 @@ export const Hero: React.FC = () => (
       <Biography>
         Having 2 years of experience, I like designing web-applications &
         building them using{' '}
-        <Highlight href="https://reactjs.org" target="_blank">
+        <Highlight
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           React
         </Highlight>{' '}
         and{' '}
-        <Highlight href="https://gatsbyjs.org" target="_blank">
+        <Highlight
+          href="https://gatsbyjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Gatsby
         </Highlight>
         .
@@ -38,10 +46,18 @@ export const Hero: React.FC = () => (
         Someone once said to me: "The meaning of life is to give life meaning".
       </Biography>
       <IconContainer>
-        <a href="https://linkedin.com/in/david-zlobinskyy" target="_blank">
+        <a
+          href="https://linkedin.com/in/david-zlobinskyy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FiLinkedin />
         </a>
-        <a href="https://github.com/zlobizlobi" target="_blank">
+        <a
+          href="https://github.com/zlobizlobi"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FiGithub />
         </a>
       </IconContainer>

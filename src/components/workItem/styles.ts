@@ -10,7 +10,7 @@ export const Overlay = styled.div`
   opacity: 0;
   transition: all 0.2s ease;
   background-color: ${({ theme }) => theme.color.secondary};
-  z-index: 1;
+  z-index: 0;
   display: flex;
   align-items: center;
   justify-content: center;
