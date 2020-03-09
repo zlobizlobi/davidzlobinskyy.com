@@ -1,7 +1,18 @@
 import styled from 'styled-components';
 import { Text as TextComponent } from '../text';
+import ImgComponent from 'gatsby-image';
 
-export const Overlay = styled.div`
+export const Anchor = styled.a`
+  margin-bottom: 15px;
+
+  &:last-child {
+    margin: 0;
+  }
+
+  outline: inherit;
+`;
+
+export const Overlay = styled.span`
   position: absolute;
   top: 0;
   left: 0;
@@ -27,10 +38,9 @@ export const Text = styled(TextComponent)`
   text-decoration: none;
 `;
 
-export const Container = styled.div`
+export const Container = styled.span`
   position: relative;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   border: 1px solid ${({ theme }) => theme.color.secondary};
   border-radius: 2px;
@@ -50,4 +60,13 @@ export const Container = styled.div`
       opacity: 1;
     }
   }
+`;
+
+export const Img = styled(ImgComponent).attrs({
+  imgStyle: {
+    objectFit: 'contain',
+  },
+})`
+  width: 200px;
+  height: 90px;
 `;

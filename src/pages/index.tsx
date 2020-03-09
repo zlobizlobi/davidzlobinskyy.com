@@ -1,5 +1,6 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react';
-import { Layout, Hero, Heading, Text, WorkItem } from 'components';
+import React, { useRef, useState, useEffect } from 'react';
+import * as easings from 'd3-ease';
+import { Layout, Hero, Text, WorkItem } from 'components';
 import styled from 'styled-components';
 import { media } from 'styles';
 import { graphql, useStaticQuery } from 'gatsby';
@@ -8,6 +9,7 @@ import SliderComponent from 'react-slick';
 import { getItemFromImage } from 'utils';
 import 'slick-carousel/slick/slick.css';
 import { SEO } from '../components';
+import { useSpring, animated } from 'react-spring';
 
 var carouselSettings = {
   autoplay: true,
@@ -32,9 +34,11 @@ const Slider = styled(SliderComponent)`
     width: 100%;
     height: auto;
     position: absolute;
-    bottom: -220px;
-    padding: 50px 0;
+    padding: 35px 0;
   `)}
+
+  .slick-track > div {
+  }
 `;
 
 const Section = styled.section`
@@ -72,25 +76,17 @@ const FlexContainer = styled.div`
   `)}
 `;
 
-const Anchor = styled.a`
-  margin-bottom: 15px;
+// const SubHeading = styled(Text)`
+//   display: none;
 
-  &:last-child {
-    margin: 0;
-  }
-`;
-
-const SubHeading = styled(Text)`
-  display: none;
-
-  ${media.md(`
-    display: inline;
-    color: #f47176;
-    align-self: flex-start;
-    margin-left: 25px;
-    opacity: 0.8;
-  `)}
-`;
+//   ${media.md(`
+//     display: inline;
+//     color: #f47176;
+//     align-self: flex-start;
+//     margin-left: 25px;
+//     opacity: 0.8;
+//   `)}
+// `;
 
 interface IImage {
   id: string;
@@ -101,9 +97,33 @@ interface IImage {
 }
 
 const IndexPage: React.FC = () => {
-  const ref = useRef<HTMLElement>(null!);
+  let scrollRef = useRef<number>(null!);
 
   const [fade, setFade] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  });
+
+  const animationHero = useSpring({
+    config: {
+      duration: 750,
+      mass: 500,
+      friction: 100,
+      tension: 300,
+      easing: easings.easeCubicInOut,
+    },
+    transform: fade ? 'translateY(-500px)' : 'translateY(0px)',
+  });
+
+  // const trail = useTrail(items.length, {
+  //   from: { opacity: 0, transform: 'translate3d(0,90px,0)' },
+  //   opacity: 1,
+  //   transform: 'translate3d(0,0px,0)',
+  //   config: { mass: 1, tension: 200, friction: 30 },
+  // });
 
   const data = useStaticQuery(graphql`
     query MyQuery {
@@ -119,17 +139,27 @@ const IndexPage: React.FC = () => {
     }
   `);
 
-  const handleScroll = () => {
-    console.log(ref);
-    if (ref.current.offsetTop === window.pageYOffset) {
-      console.log('hit');
+  const handleScroll = (e: any) => {
+    const window = e.currentTarget;
+
+    if (scrollRef > window.scrollY) {
+      setFade(false);
+      scrollRef = window.scrollY;
+      return;
     }
-    // console.log({ ref: ref.current, window: window.pageYOffset });
+
+    if (scrollRef < window.scrollY) {
+      setFade(true);
+      return;
+    }
+
+    scrollRef = window.scrollY;
   };
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+  const sliderAnchorTags = document.querySelectorAll('.slick-anchor'); // Get all anchor tags within the Slider
+
+  sliderAnchorTags.forEach(slide => {
+    slide.setAttribute('tabindex', '1'); // Change the tabindex of the slides to a positive value so they're accessible.
   });
 
   const {
@@ -145,39 +175,32 @@ const IndexPage: React.FC = () => {
         lang="en"
         meta={[]}
       />
-      <Section>
-        <Greeting>
-          Hi friend <span role="img" aria-label="hand"></span>👋,
-        </Greeting>
-        <Hero />
-      </Section>
-      <Section id="projects" ref={ref}>
-        {/* <Heading>See my work</Heading>
-        <SubHeading>
-          hover over the cards to learn more about the projects
-        </SubHeading> */}
+      <animated.div style={animationHero}>
+        <Section>
+          <Greeting>
+            Hi friend <span role="img" aria-label="hand"></span>👋,
+          </Greeting>
+          <Hero />
+        </Section>
+      </animated.div>
+      <Section id="projects">
         <FlexContainer>
           {images.map((image: IImage) => {
             const { href, workInformation } = getItemFromImage(
               image.childImageSharp.fluid.src
             );
 
-            if (href === 'favicon') {
-              return null;
-            }
-
             return (
-              <Anchor
+              <WorkItem
+                className="slick-anchor"
                 href={href}
                 key={image.id}
                 target="_blank"
                 rel="noopener noreferrer"
-              >
-                <WorkItem
-                  imgSrc={image.childImageSharp.fluid}
-                  workInformation={workInformation}
-                />
-              </Anchor>
+                alt={workInformation}
+                imgSrc={image.childImageSharp.fluid}
+                workInformation={workInformation}
+              />
             );
           })}
         </FlexContainer>
@@ -187,22 +210,17 @@ const IndexPage: React.FC = () => {
               image.childImageSharp.fluid.src
             );
 
-            if (href === 'favicon') {
-              return null;
-            }
-
             return (
-              <Anchor
+              <WorkItem
+                className="slick-anchor"
                 href={href}
                 key={image.id}
                 target="_blank"
                 rel="noopener noreferrer"
-              >
-                <WorkItem
-                  imgSrc={image.childImageSharp.fluid}
-                  workInformation={workInformation}
-                />
-              </Anchor>
+                alt={workInformation}
+                imgSrc={image.childImageSharp.fluid}
+                workInformation={workInformation}
+              />
             );
           })}
         </Slider>

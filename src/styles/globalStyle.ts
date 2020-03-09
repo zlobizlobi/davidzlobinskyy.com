@@ -69,6 +69,11 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Jost', sans-serif;
         scroll-behavior: smooth;
         background-color: ${({ theme }) => theme.color.body};
+
+       * >  ::selection {
+            background-color: ${({ theme }) => theme.color.secondary};
+            color: ${({ theme }) => theme.color.primary};
+        }
     }
 
     button, textarea, input {

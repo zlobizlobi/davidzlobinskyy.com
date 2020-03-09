@@ -37,7 +37,7 @@ export const getItemFromImage = (src: string): IItem => {
         href: 'https://young-socials.nl',
         workInformation: 'Small Web Project for "Young Socials | Video Agency"',
       };
-    case 'enable.jpg':
+    case 'enable.png':
       return {
         href: 'https://enablethelabel.com',
         workInformation:
