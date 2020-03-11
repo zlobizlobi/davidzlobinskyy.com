@@ -5,41 +5,10 @@ import styled from 'styled-components';
 import { media } from 'styles';
 import { graphql, useStaticQuery } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
-import SliderComponent from 'react-slick';
 import { getItemFromImage } from 'utils';
-import 'slick-carousel/slick/slick.css';
 import { SEO } from '../components';
-import { useSpring, animated } from 'react-spring';
-
-var carouselSettings = {
-  autoplay: true,
-  autoplaySpeed: 2000,
-  infinite: true,
-  cssEase: 'ease-in-out',
-  centerMode: true,
-  centerPadding: '2.5px',
-  arrows: false,
-  pauseOnHover: true,
-  slidesToScroll: 1,
-  slidesToShow: 4.2,
-  swipeToSlide: true,
-  accessibility: true,
-};
-
-const Slider = styled(SliderComponent)`
-  display: none;
-
-  ${media.lg(`
-    display: block;
-    width: 100%;
-    height: auto;
-    position: absolute;
-    padding: 35px 0;
-  `)}
-
-  .slick-track > div {
-  }
-`;
+import { useSpring, animated, config } from 'react-spring';
+import { Trail } from 'react-spring/renderprops';
 
 const Section = styled.section`
   padding: 25px 15px 0 15px;
@@ -49,9 +18,9 @@ const Section = styled.section`
   max-width: 900px;
   margin: 0 auto;
 
-  ${media.md(`
-      padding: 55px 0 0 0;
-  `)}
+  &:[href*='home'] {
+    z-index: 1;
+  }
 `;
 
 const Greeting = styled(Text)`
@@ -67,13 +36,12 @@ const Greeting = styled(Text)`
 
 const FlexContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100vw;
-
-  ${media.lg(`
-    display: none;
-  `)}
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 900px;
+  position: absolute;
+  z-index: 0;
+  top: 250px;
 `;
 
 // const SubHeading = styled(Text)`
@@ -97,34 +65,6 @@ interface IImage {
 }
 
 const IndexPage: React.FC = () => {
-  let scrollRef = useRef<number>(null!);
-
-  const [fade, setFade] = useState(false);
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  });
-
-  const animationHero = useSpring({
-    config: {
-      duration: 750,
-      mass: 500,
-      friction: 100,
-      tension: 300,
-      easing: easings.easeCubicInOut,
-    },
-    transform: fade ? 'translateY(-500px)' : 'translateY(0px)',
-  });
-
-  // const trail = useTrail(items.length, {
-  //   from: { opacity: 0, transform: 'translate3d(0,90px,0)' },
-  //   opacity: 1,
-  //   transform: 'translate3d(0,0px,0)',
-  //   config: { mass: 1, tension: 200, friction: 30 },
-  // });
-
   const data = useStaticQuery(graphql`
     query MyQuery {
       allFile {
@@ -139,32 +79,63 @@ const IndexPage: React.FC = () => {
     }
   `);
 
+  const {
+    allFile: { nodes: images },
+  } = data;
+
+  let scrollRef = useRef<number>(null!);
+
+  const [isFaded, setFaded] = useState<boolean>(false);
+
   const handleScroll = (e: any) => {
     const window = e.currentTarget;
 
     if (scrollRef > window.scrollY) {
-      setFade(false);
-      scrollRef = window.scrollY;
-      return;
+      setFaded(false);
     }
 
     if (scrollRef < window.scrollY) {
-      setFade(true);
-      return;
+      setFaded(true);
     }
 
     scrollRef = window.scrollY;
   };
 
-  const sliderAnchorTags = document.querySelectorAll('.slick-anchor'); // Get all anchor tags within the Slider
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
 
-  sliderAnchorTags.forEach(slide => {
-    slide.setAttribute('tabindex', '1'); // Change the tabindex of the slides to a positive value so they're accessible.
+    return () => window.removeEventListener('scroll', handleScroll);
   });
 
-  const {
-    allFile: { nodes: images },
-  } = data;
+  const items = images.map((image: IImage) => {
+    const { href, workInformation } = getItemFromImage(
+      image.childImageSharp.fluid.src
+    );
+
+    return (
+      <WorkItem
+        href={href}
+        key={image.id}
+        target="_blank"
+        rel="noopener noreferrer"
+        alt={workInformation}
+        imgSrc={image.childImageSharp.fluid}
+        workInformation={workInformation}
+      />
+    );
+  });
+
+  const animationHero = useSpring({
+    config: {
+      delay: isFaded ? 1000 : 0,
+      duration: 500,
+      mass: 500,
+      friction: 100,
+      tension: 300,
+      easing: easings.easeCubicInOut,
+    },
+    opacity: isFaded ? 0 : 1,
+  });
 
   return (
     <Layout>
@@ -185,45 +156,28 @@ const IndexPage: React.FC = () => {
       </animated.div>
       <Section id="projects">
         <FlexContainer>
-          {images.map((image: IImage) => {
-            const { href, workInformation } = getItemFromImage(
-              image.childImageSharp.fluid.src
-            );
-
-            return (
-              <WorkItem
-                className="slick-anchor"
-                href={href}
-                key={image.id}
-                target="_blank"
-                rel="noopener noreferrer"
-                alt={workInformation}
-                imgSrc={image.childImageSharp.fluid}
-                workInformation={workInformation}
-              />
-            );
-          })}
+          <Trail
+            config={{ ...config.default, easing: easings.easeCubicOut }}
+            items={items}
+            keys={item => item.key}
+            from={{
+              opacity: 0,
+              transform: isFaded ? 'translateY(-50%)' : 'translateY(0px)',
+            }}
+            to={{
+              opacity: isFaded ? 1 : 0,
+              transform: isFaded ? 'translateY(-50%)' : 'translateY(0px)',
+            }}
+          >
+            {item => props => {
+              return (
+                <animated.div style={{ ...props, margin: '15px' }}>
+                  {item}
+                </animated.div>
+              );
+            }}
+          </Trail>
         </FlexContainer>
-        <Slider {...carouselSettings}>
-          {images.map((image: IImage) => {
-            const { href, workInformation } = getItemFromImage(
-              image.childImageSharp.fluid.src
-            );
-
-            return (
-              <WorkItem
-                className="slick-anchor"
-                href={href}
-                key={image.id}
-                target="_blank"
-                rel="noopener noreferrer"
-                alt={workInformation}
-                imgSrc={image.childImageSharp.fluid}
-                workInformation={workInformation}
-              />
-            );
-          })}
-        </Slider>
       </Section>
     </Layout>
   );

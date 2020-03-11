@@ -38,9 +38,9 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-tslint',
       options: {
-        test: /\.(j|t)sx?$/,
+        test: /\.ts$|\.tsx$/,
         exclude: /(node_modules|cache|public)/,
-        use: 'tslint-loader',
+        loader: 'ts-loader',
       },
     },
     `gatsby-plugin-typescript`,

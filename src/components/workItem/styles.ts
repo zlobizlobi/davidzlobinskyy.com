@@ -4,12 +4,6 @@ import ImgComponent from 'gatsby-image';
 
 export const Anchor = styled.a`
   margin-bottom: 15px;
-
-  &:last-child {
-    margin: 0;
-  }
-
-  outline: inherit;
 `;
 
 export const Overlay = styled.span`
@@ -44,9 +38,7 @@ export const Container = styled.span`
   justify-content: center;
   border: 1px solid ${({ theme }) => theme.color.secondary};
   border-radius: 2px;
-  width: 260px;
-  height: 80px;
-  padding: 25px 15px;
+  padding: 25px 30px;
   box-sizing: content-box;
   background-color: transparent;
   transition: all 0.2s ease;
