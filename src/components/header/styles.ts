@@ -1,5 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
+import { AnchorLink as AnchorLinkComponent } from 'gatsby-plugin-anchor-links';
 
 export const HeaderComponent = styled.header`
   position: fixed;
@@ -31,35 +32,29 @@ export const IconLink = styled(Link)`
   color: ${({ theme }) => theme.color.secondary};
 `;
 
-export const NavLink = styled(Link).attrs({
-  activeStyle: {
-    opacity: 1,
-  },
-})`
+const navLinkCss = css`
   color: ${({ theme }) => theme.color.secondary};
   text-decoration: none;
   font-weight: 500;
   font-size: 14px;
   padding: 15px;
-  opacity: 0.4;
+  opacity: 0.3;
   transition: opacity 0.2s ease;
   position: relative;
+`;
 
-  span {
-    width: 0%;
-    height: 1px;
-    background-color: black;
-    position: absolute;
-    left: 0;
-    top: 0;
-    transition: width 0.2s ease;
-  }
+export const NavLink = styled(Link).attrs({
+  activeStyle: {
+    opacity: 1,
+  },
+})`
+  ${navLinkCss}
+`;
 
-  :hover {
+export const AnchorLink = styled(AnchorLinkComponent)`
+  ${navLinkCss};
+
+  :focus {
     opacity: 1;
-
-    > span {
-      width: 100%;
-    }
   }
 `;

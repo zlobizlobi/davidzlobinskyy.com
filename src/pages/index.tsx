@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import * as easings from 'd3-ease';
-import { Layout, Hero, Text, WorkItem } from 'components';
+import { Layout, Hero, Text, WorkItem, Heading } from 'components';
 import styled from 'styled-components';
 import { media } from 'styles';
 import { graphql, useStaticQuery } from 'gatsby';
@@ -18,7 +18,8 @@ const Section = styled.section`
   max-width: 900px;
   margin: 0 auto;
 
-  &:[href*='home'] {
+  &:first-child {
+    position: relative;
     z-index: 1;
   }
 `;
@@ -44,17 +45,17 @@ const FlexContainer = styled.div`
   top: 250px;
 `;
 
-// const SubHeading = styled(Text)`
-//   display: none;
+const SubHeading = styled(Text)`
+  display: none;
 
-//   ${media.md(`
-//     display: inline;
-//     color: #f47176;
-//     align-self: flex-start;
-//     margin-left: 25px;
-//     opacity: 0.8;
-//   `)}
-// `;
+  ${media.md(`
+    display: inline;
+    color: #f47176;
+    align-self: flex-start;
+    margin-left: 25px;
+    opacity: 0.8;
+  `)}
+`;
 
 interface IImage {
   id: string;
@@ -157,7 +158,7 @@ const IndexPage: React.FC = () => {
       <Section id="projects">
         <FlexContainer>
           <Trail
-            config={{ ...config.default, easing: easings.easeCubicOut }}
+            config={{ ...config.stiff }}
             items={items}
             keys={item => item.key}
             from={{

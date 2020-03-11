@@ -1,5 +1,12 @@
 import React from 'react';
-import { Nav, NavLink, NavList, HeaderComponent, IconLink } from './styles';
+import {
+  Nav,
+  NavLink,
+  NavList,
+  HeaderComponent,
+  IconLink,
+  AnchorLink,
+} from './styles';
 
 export const Header = () => (
   <HeaderComponent>
@@ -10,10 +17,10 @@ export const Header = () => (
           hello
           <span />
         </NavLink>
-        <NavLink to="#projects">
+        <AnchorLink to="#projects">
           projects
           <span />
-        </NavLink>
+        </AnchorLink>
         <NavLink to="/contact">
           contact me
           <span />

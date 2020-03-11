@@ -14,6 +14,7 @@
     "d3-ease": "^1.0.6",
     "gatsby": "^2.19.7",
     "gatsby-image": "^2.2.39",
+    "gatsby-plugin-anchor-links": "^1.1.0",
     "gatsby-plugin-layout": "^1.1.22",
     "gatsby-plugin-manifest": "^2.2.39",
     "gatsby-plugin-offline": "^3.0.32",

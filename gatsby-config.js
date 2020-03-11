@@ -8,8 +8,6 @@ module.exports = {
     siteUrl: `https://davidzlobinskyy.com`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sitemap`,
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
@@ -33,8 +31,6 @@ module.exports = {
         path: `${__dirname}/src/assets/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: 'gatsby-plugin-tslint',
       options: {
@@ -43,8 +39,6 @@ module.exports = {
         loader: 'ts-loader',
       },
     },
-    `gatsby-plugin-typescript`,
-    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -57,6 +51,13 @@ module.exports = {
         icon: `src/assets/favicon.png`, // This path is relative to the root of the site.
       },
     },
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-styled-components`,
+    'gatsby-plugin-anchor-links',
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sitemap`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
