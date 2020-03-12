@@ -1,26 +1,27 @@
 import React, { useRef, useState, useEffect } from 'react';
 import * as easings from 'd3-ease';
-import { Layout, Hero, Text, WorkItem, Heading } from 'components';
-import styled from 'styled-components';
-import { media } from 'styles';
 import { graphql, useStaticQuery } from 'gatsby';
+import styled from 'styled-components';
 import { FluidObject } from 'gatsby-image';
-import { getItemFromImage } from 'utils';
-import { SEO } from '../components';
 import { useSpring, animated, config } from 'react-spring';
 import { Trail } from 'react-spring/renderprops';
+import { Layout, Hero, Text, WorkItem } from 'components';
+import { media } from 'styles';
+import { getItemFromImage } from 'utils';
+import { SEO } from '../components';
 
 const Section = styled.section`
-  padding: 25px 15px 0 15px;
+  padding: 0 15px 0 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 900px;
   margin: 0 auto;
+  height: 100%;
 
   &:first-child {
     position: relative;
-    z-index: 1;
+    z-index: 0;
   }
 `;
 
@@ -31,29 +32,31 @@ const Greeting = styled(Text)`
 
   ${media.md(`
       font-size: 30px;
-      padding-left: 20px;
+      padding-left: 100px;
   `)}
 `;
 
 const FlexContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 900px;
-  position: absolute;
-  z-index: 0;
-  top: 250px;
-`;
-
-const SubHeading = styled(Text)`
   display: none;
 
   ${media.md(`
-    display: inline;
-    color: #f47176;
-    align-self: flex-start;
-    margin-left: 25px;
-    opacity: 0.8;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 900px;
+    position: absolute;
+    top: 10%;
+  `)}
+`;
+
+const MobileItemsContainer = styled.span`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+
+  ${media.md(`
+    display: none;
   `)}
 `;
 
@@ -128,13 +131,14 @@ const IndexPage: React.FC = () => {
 
   const animationHero = useSpring({
     config: {
-      delay: isFaded ? 1000 : 0,
       duration: 500,
       mass: 500,
       friction: 100,
       tension: 300,
       easing: easings.easeCubicInOut,
+      delay: !isFaded ? 0 : 900,
     },
+    transform: isFaded ? 'translate3d(0,-500px,0)' : 'translate3d(0,0px, 0)',
     opacity: isFaded ? 0 : 1,
   });
 
@@ -147,32 +151,45 @@ const IndexPage: React.FC = () => {
         lang="en"
         meta={[]}
       />
-      <animated.div style={animationHero}>
-        <Section>
+      <Section>
+        <animated.div
+          style={{
+            ...animationHero,
+            width: '100%',
+            marginTop: '50px',
+          }}
+        >
           <Greeting>
             Hi friend <span role="img" aria-label="hand"></span>👋,
           </Greeting>
           <Hero />
-        </Section>
-      </animated.div>
+        </animated.div>
+      </Section>
+      <MobileItemsContainer>{items}</MobileItemsContainer>
       <Section id="projects">
         <FlexContainer>
           <Trail
-            config={{ ...config.stiff }}
+            config={{
+              ...config.stiff,
+              mass: 1,
+              friction: 30,
+              tension: 400,
+              delay: !isFaded ? 0 : 900,
+            }}
             items={items}
             keys={item => item.key}
             from={{
               opacity: 0,
-              transform: isFaded ? 'translateY(-50%)' : 'translateY(0px)',
+              transform: isFaded ? 'translateY(200px)' : 'translateY(-100px)',
             }}
             to={{
               opacity: isFaded ? 1 : 0,
-              transform: isFaded ? 'translateY(-50%)' : 'translateY(0px)',
+              transform: isFaded ? 'translateY(200px)' : 'translateY(-100px)',
             }}
           >
             {item => props => {
               return (
-                <animated.div style={{ ...props, margin: '15px' }}>
+                <animated.div style={{ ...props, margin: '10px' }}>
                   {item}
                 </animated.div>
               );

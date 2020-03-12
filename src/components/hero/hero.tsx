@@ -9,6 +9,41 @@ import {
 } from './styles';
 import { IconContext } from 'react-icons';
 import { FiLinkedin, FiGithub } from 'react-icons/fi';
+import { MdMouse } from 'react-icons/md';
+
+import styled from 'styled-components';
+
+export const Button = styled.button`
+  display: flex;
+  border: none;
+  background-color: transparent;
+  align-items: center;
+  margin: 70px 0;
+
+  > svg {
+    font-size: 20px;
+    opacity: 0.7;
+  }
+`;
+
+export const ButtonTextContainer = styled.span`
+  display: flex;
+  flex-direction: column;
+  color: ${({ theme }) => theme.color.secondary};
+  align-items: flex-end;
+  margin-right: 5px;
+
+  > :nth-child(1) {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  > :nth-child(2) {
+    font-size: 14px;
+    opacity: 0.7;
+    font-weight: 200;
+  }
+`;
 
 export const Hero: React.FC = () => (
   <IconContext.Provider
@@ -61,6 +96,13 @@ export const Hero: React.FC = () => (
           <FiGithub />
         </a>
       </IconContainer>
+      <Button>
+        <ButtonTextContainer>
+          <span>Scroll down</span>
+          <span>to discover more</span>
+        </ButtonTextContainer>
+        <MdMouse />
+      </Button>
     </Container>
   </IconContext.Provider>
 );

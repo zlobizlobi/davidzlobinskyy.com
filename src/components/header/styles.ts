@@ -6,7 +6,7 @@ export const HeaderComponent = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   background-color: ${({ theme }) => theme.color.primary};
 `;
