@@ -1,11 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import * as easings from 'd3-ease';
 import { graphql, useStaticQuery } from 'gatsby';
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import { FluidObject } from 'gatsby-image';
-import { useSpring, animated, config } from 'react-spring';
+import { useSpring, animated } from 'react-spring';
 import { Trail } from 'react-spring/renderprops';
-import { Layout, Hero, Text, WorkItem } from 'components';
+import { Layout, Hero, Text, WorkCase } from 'components';
 import { media } from 'styles';
 import { getItemFromImage } from 'utils';
 import { SEO } from '../components';
@@ -24,13 +24,6 @@ const Section = styled.section`
     justify-content: space-around;
   }
 
-  &:last-child {
-    position: absolute;
-    top: 0px;
-    justify-content: center;
-    min-width: 100%;
-  }
-
   ${media.md(`
     padding: 0;
   `)}
@@ -47,41 +40,46 @@ const Greeting = styled(Text)`
   `)}
 `;
 
-const FlexContainer = styled.div`
-  display: none;
-
-  ${media.lg(`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 100%;
-  `)}
-`;
-
-const MobileItemsContainer = styled.span`
+const WorkCasesContainer = styled.span`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 50px 0;
+  flex-wrap: wrap;
+  padding: 100px;
 
-  ${media.lg(`
-    display: none;
-  `)}
+  > a {
+    &:last-child {
+      margin: 0;
+    }
+
+    margin-bottom: 20px;
+
+    ${media.sm(`
+      margin: 10px;
+    `)}
+  }
 `;
 
 export const Button = styled.button`
   display: none;
 
   ${media.md(`
+
+  @keyframes opacity {
+    from { opacity: 0; }
+    to { left: 1; }
+  }
+
     display: inline;
     border: none;
     background-color: transparent;
     display: flex;
     align-items: center;
-    
+
     > svg {
+      opacity: 1;
       font-size: 20px;
-      opacity: 0.7;
+      animation: opacity 1s alternate infinite;
     }
   `)}
 `;
@@ -156,13 +154,13 @@ const IndexPage: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   });
 
-  const items = images.map((image: IImage) => {
+  const workCases = images.map((image: IImage) => {
     const { href, workInformation } = getItemFromImage(
       image.childImageSharp.fluid.src
     );
 
     return (
-      <WorkItem
+      <WorkCase
         href={href}
         key={image.id}
         target="_blank"
@@ -220,9 +218,8 @@ const IndexPage: React.FC = () => {
           <MdMouse />
         </Button>
       </Section>
-      <MobileItemsContainer>{items}</MobileItemsContainer>
       <Section id="projects">
-        <FlexContainer>
+        <WorkCasesContainer>
           <Trail
             config={{
               mass: 1,
@@ -230,15 +227,15 @@ const IndexPage: React.FC = () => {
               tension: 400,
               delay: !isFaded ? 0 : 900,
             }}
-            items={items}
+            items={workCases}
             keys={item => item.key}
             from={{
               opacity: 0,
-              transform: isFaded ? 'translateY(30vh)' : 'translateY(0.1vh)',
+              transform: isFaded ? 'translateY(5%)' : 'translateY(-50%)',
             }}
             to={{
               opacity: isFaded ? 1 : 0,
-              transform: isFaded ? 'translateY(30vh)' : 'translateY(0.1vh)',
+              transform: isFaded ? 'translateY(5%)' : 'translateY(-50%)',
             }}
           >
             {item => props => (
@@ -247,7 +244,7 @@ const IndexPage: React.FC = () => {
               </animated.div>
             )}
           </Trail>
-        </FlexContainer>
+        </WorkCasesContainer>
       </Section>
     </Layout>
   );

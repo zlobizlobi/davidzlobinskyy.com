@@ -7,7 +7,7 @@ interface IProps {
   workInformation: string;
 }
 
-export const WorkItem: React.FC<IProps> = ({
+export const WorkCase: React.FC<IProps> = ({
   imgSrc,
   workInformation,
   ...props
