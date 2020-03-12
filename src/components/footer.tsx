@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Text as TextComponent } from './text';
 import amsterdamIcon from '../assets/holland.svg';
+import { media } from 'styles';
 
 export const FooterComponent = styled.footer`
   display: flex;
@@ -11,6 +12,12 @@ export const FooterComponent = styled.footer`
   height: 100px;
   background-color: ${({ theme }) => theme.color.primary};
   border-top: 1px solid ${({ theme }) => theme.color.secondary};
+  position: static;
+
+  ${media.xxl(`
+    position: absolute;
+    bottom: 0;
+  `)}
 `;
 
 export const Container = styled.div`

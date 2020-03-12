@@ -25,9 +25,10 @@ const Section = styled.section`
 
   &:last-child {
     position: absolute;
-    bottom: 0px;
+    top: 150px;
     width: 100%;
-    align-self: center;
+    max-width: unset;
+    margin: 0;
   }
 `;
 
@@ -50,8 +51,6 @@ const FlexContainer = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     max-width: 900px;
-    position: absolute;
-    bottom: 200px;
   `)}
 `;
 

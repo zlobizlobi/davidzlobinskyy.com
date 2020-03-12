@@ -1,17 +1,21 @@
 import { css } from 'styled-components';
 
 interface BreakPoints {
+  xs: number;
   sm: number;
   md: number;
   lg: number;
   xl: number;
+  xxl: number;
 }
 
 export const breakpoints: BreakPoints = {
-  sm: 576,
-  md: 768,
-  lg: 992,
-  xl: 1200,
+  xs: 320,
+  sm: 480,
+  md: 600,
+  lg: 801,
+  xl: 1025,
+  xxl: 1450,
 };
 
 type BreakpointKeys = keyof BreakPoints;

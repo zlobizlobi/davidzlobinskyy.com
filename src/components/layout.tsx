@@ -18,7 +18,7 @@ export const Layout: React.FC<{}> = ({ children }) => {
   }, []);
 
   return (
-    <ThemeProvider theme={appTheme === 'light' ? lightTheme : darkTheme}>
+    <ThemeProvider theme={lightTheme}>
       <GlobalStyle />
       <Header />
       <main
