@@ -22,7 +22,12 @@ export const Layout: React.FC<{}> = ({ children }) => {
       <GlobalStyle />
       <Header />
       <main
-        style={{ marginTop: '50px', paddingBottom: '50px', flex: '1 0 auto' }}
+        style={{
+          marginTop: '50px',
+          paddingBottom: '50px',
+          flex: '1 0 auto',
+          position: 'relative',
+        }}
       >
         {children}
       </main>

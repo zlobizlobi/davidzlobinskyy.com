@@ -6,6 +6,7 @@ import Book from '../fonts/Jost400Book.woff';
 import Medium from '../fonts/Jost500Medium.woff';
 import Semi from '../fonts/Jost600Semi.woff';
 import Bold from '../fonts/Jost700Bold.woff';
+import { media } from './media';
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -89,5 +90,4 @@ export const GlobalStyle = createGlobalStyle`
     textarea {
         resize: none;
     }
-
 `;

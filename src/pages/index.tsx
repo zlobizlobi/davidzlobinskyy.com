@@ -17,11 +17,17 @@ const Section = styled.section`
   align-items: center;
   max-width: 900px;
   margin: 0 auto;
-  height: 100%;
 
   &:first-child {
-    position: relative;
     z-index: 0;
+    height: ${({ isFaded }) => (isFaded ? '100%' : '100vh')};
+  }
+
+  &:last-child {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    align-self: center;
   }
 `;
 
@@ -45,7 +51,7 @@ const FlexContainer = styled.div`
     justify-content: center;
     max-width: 900px;
     position: absolute;
-    top: 10%;
+    bottom: 200px;
   `)}
 `;
 
@@ -151,7 +157,7 @@ const IndexPage: React.FC = () => {
         lang="en"
         meta={[]}
       />
-      <Section>
+      <Section isFaded={isFaded}>
         <animated.div
           style={{
             ...animationHero,
@@ -180,20 +186,22 @@ const IndexPage: React.FC = () => {
             keys={item => item.key}
             from={{
               opacity: 0,
-              transform: isFaded ? 'translateY(200px)' : 'translateY(-100px)',
+              transform: isFaded
+                ? 'translate3d(0, 100px, 0)'
+                : 'translate3d(0,0px, 0)',
             }}
             to={{
               opacity: isFaded ? 1 : 0,
-              transform: isFaded ? 'translateY(200px)' : 'translateY(-100px)',
+              transform: isFaded
+                ? 'translate3d(0, 100px, 0)'
+                : 'translate3d(0, 0px, 0)',
             }}
           >
-            {item => props => {
-              return (
-                <animated.div style={{ ...props, margin: '10px' }}>
-                  {item}
-                </animated.div>
-              );
-            }}
+            {item => props => (
+              <animated.div style={{ ...props, margin: '10px' }}>
+                {item}
+              </animated.div>
+            )}
           </Trail>
         </FlexContainer>
       </Section>
