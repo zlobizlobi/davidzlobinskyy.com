@@ -18,19 +18,10 @@ export const Layout: React.FC<{}> = ({ children }) => {
   }, []);
 
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={appTheme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyle />
       <Header />
-      <main
-        style={{
-          marginTop: '50px',
-          paddingBottom: '50px',
-          flex: '1 0 auto',
-          position: 'relative',
-        }}
-      >
-        {children}
-      </main>
+      <main>{children}</main>
       <ThemeSwitch
         theme={appTheme}
         onClick={() => {

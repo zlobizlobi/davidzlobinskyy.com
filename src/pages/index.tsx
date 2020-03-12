@@ -9,27 +9,31 @@ import { Layout, Hero, Text, WorkItem } from 'components';
 import { media } from 'styles';
 import { getItemFromImage } from 'utils';
 import { SEO } from '../components';
+import { MdMouse } from 'react-icons/md';
 
 const Section = styled.section`
   padding: 0 15px 0 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 900px;
-  margin: 0 auto;
 
   &:first-child {
-    z-index: 0;
-    height: ${({ isFaded }) => (isFaded ? '100%' : '100vh')};
+    margin: 0 auto;
+    min-height: 100vh;
+    max-width: 900px;
+    justify-content: space-around;
   }
 
   &:last-child {
     position: absolute;
-    top: 150px;
-    width: 100%;
-    max-width: unset;
-    margin: 0;
+    top: 0px;
+    justify-content: center;
+    min-width: 100%;
   }
+
+  ${media.md(`
+    padding: 0;
+  `)}
 `;
 
 const Greeting = styled(Text)`
@@ -46,11 +50,11 @@ const Greeting = styled(Text)`
 const FlexContainer = styled.div`
   display: none;
 
-  ${media.md(`
+  ${media.lg(`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 900px;
+    max-width: 100%;
   `)}
 `;
 
@@ -58,11 +62,47 @@ const MobileItemsContainer = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
+  padding: 50px 0;
 
-  ${media.md(`
+  ${media.lg(`
     display: none;
   `)}
+`;
+
+export const Button = styled.button`
+  display: none;
+
+  ${media.md(`
+    display: inline;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    
+    > svg {
+      font-size: 20px;
+      opacity: 0.7;
+    }
+  `)}
+`;
+
+export const ButtonTextContainer = styled.span`
+  display: flex;
+  flex-direction: column;
+  color: ${({ theme }) => theme.color.secondary};
+  align-items: flex-end;
+  margin-right: 5px;
+
+  > :nth-child(1) {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  > :nth-child(2) {
+    font-size: 14px;
+    opacity: 0.7;
+    font-weight: 200;
+  }
 `;
 
 interface IImage {
@@ -141,9 +181,8 @@ const IndexPage: React.FC = () => {
       friction: 100,
       tension: 300,
       easing: easings.easeCubicInOut,
-      delay: !isFaded ? 0 : 900,
     },
-    transform: isFaded ? 'translate3d(0,-500px,0)' : 'translate3d(0,0px, 0)',
+    transform: isFaded ? 'translate3d(0,-500px,0)' : 'translate3d(0,0px,0)',
     opacity: isFaded ? 0 : 1,
   });
 
@@ -156,26 +195,36 @@ const IndexPage: React.FC = () => {
         lang="en"
         meta={[]}
       />
-      <Section isFaded={isFaded}>
+      <Section id="home" isFaded={isFaded}>
         <animated.div
           style={{
             ...animationHero,
             width: '100%',
-            marginTop: '50px',
+            marginTop: '60px',
           }}
         >
           <Greeting>
-            Hi friend <span role="img" aria-label="hand"></span>👋,
+            Hi friend{' '}
+            <span role="img" aria-label="hand">
+              👋
+            </span>
+            ,
           </Greeting>
           <Hero />
         </animated.div>
+        <Button>
+          <ButtonTextContainer>
+            <span>Scroll down</span>
+            <span>to discover more</span>
+          </ButtonTextContainer>
+          <MdMouse />
+        </Button>
       </Section>
       <MobileItemsContainer>{items}</MobileItemsContainer>
       <Section id="projects">
         <FlexContainer>
           <Trail
             config={{
-              ...config.stiff,
               mass: 1,
               friction: 30,
               tension: 400,
@@ -185,15 +234,11 @@ const IndexPage: React.FC = () => {
             keys={item => item.key}
             from={{
               opacity: 0,
-              transform: isFaded
-                ? 'translate3d(0, 100px, 0)'
-                : 'translate3d(0,0px, 0)',
+              transform: isFaded ? 'translateY(30vh)' : 'translateY(0.1vh)',
             }}
             to={{
               opacity: isFaded ? 1 : 0,
-              transform: isFaded
-                ? 'translate3d(0, 100px, 0)'
-                : 'translate3d(0, 0px, 0)',
+              transform: isFaded ? 'translateY(30vh)' : 'translateY(0.1vh)',
             }}
           >
             {item => props => (

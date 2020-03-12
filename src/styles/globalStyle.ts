@@ -6,7 +6,6 @@ import Book from '../fonts/Jost400Book.woff';
 import Medium from '../fonts/Jost500Medium.woff';
 import Semi from '../fonts/Jost600Semi.woff';
 import Bold from '../fonts/Jost700Bold.woff';
-import { media } from './media';
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -64,9 +63,8 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-    body, html {
+  html, body  {
         height: 100%;
-        width: 100%;
         font-family: 'Jost', sans-serif;
         scroll-behavior: smooth;
         background-color: ${({ theme }) => theme.color.body};
@@ -80,6 +78,14 @@ export const GlobalStyle = createGlobalStyle`
     body {
         display: flex;
         flex-direction: column;
+    }
+
+    main {
+        flex-grow: 1;
+    }
+
+    header, main, footer {
+        flex-shrink: 0;
     }
 
     button, textarea, input {
