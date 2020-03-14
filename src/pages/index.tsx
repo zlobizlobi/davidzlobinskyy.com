@@ -1,15 +1,14 @@
-import React, { useRef, useState, useEffect } from 'react';
-import * as easings from 'd3-ease';
+import React, { useState, useRef } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import styled, { keyframes, css } from 'styled-components';
+import styled from 'styled-components';
 import { FluidObject } from 'gatsby-image';
-import { useSpring, animated } from 'react-spring';
+import { animated } from 'react-spring';
 import { Trail } from 'react-spring/renderprops';
 import { Layout, Hero, Text, WorkCase } from 'components';
 import { media } from 'styles';
 import { getItemFromImage } from 'utils';
 import { SEO } from '../components';
-import { MdMouse } from 'react-icons/md';
+import { Waypoint } from 'react-waypoint';
 
 const Section = styled.section`
   padding: 0 15px 0 15px;
@@ -18,22 +17,28 @@ const Section = styled.section`
   align-items: center;
 
   &:first-child {
-    margin: 0 auto;
-    min-height: 100vh;
+    margin: 50px auto 100px auto;
     max-width: 900px;
-    justify-content: space-around;
+    height: 100vh;
+    box-sizing: content-box;
   }
 
-  ${media.md(`
-    padding: 0;
-  `)}
+  &:last-child {
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 0 50px 0;
+
+    ${media.md(`
+      padding: 50px 0 200px 0;
+    `)}
+  }
 `;
 
 const Greeting = styled(Text)`
-  font-size: 22px;
   align-self: flex-start;
-  margin-bottom: 45px;
-
+  margin: 30px 0;
+  font-size: 20px;
   ${media.md(`
       font-size: 30px;
       padding-left: 100px;
@@ -45,7 +50,6 @@ const WorkCasesContainer = styled.span`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  padding: 100px;
 
   > a {
     &:last-child {
@@ -64,43 +68,19 @@ export const Button = styled.button`
   display: none;
 
   ${media.md(`
-
-  @keyframes opacity {
-    from { opacity: 0; }
-    to { left: 1; }
-  }
-
-    display: inline;
-    border: none;
-    background-color: transparent;
+    border: 1px solid red;
+    padding: 7.5px 12.5px;
     display: flex;
     align-items: center;
+    cursor: pointer;
+    margin-top: 100px;
+    transition: all 0.2s ease;
 
-    > svg {
-      opacity: 1;
-      font-size: 20px;
-      animation: opacity 1s alternate infinite;
+
+    :hover {
+      background-color: ${({ theme }) => theme.color.secondary};
     }
   `)}
-`;
-
-export const ButtonTextContainer = styled.span`
-  display: flex;
-  flex-direction: column;
-  color: ${({ theme }) => theme.color.secondary};
-  align-items: flex-end;
-  margin-right: 5px;
-
-  > :nth-child(1) {
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-  > :nth-child(2) {
-    font-size: 14px;
-    opacity: 0.7;
-    font-weight: 200;
-  }
 `;
 
 interface IImage {
@@ -130,29 +110,9 @@ const IndexPage: React.FC = () => {
     allFile: { nodes: images },
   } = data;
 
-  let scrollRef = useRef<number>(null!);
+  const projectSectionRef = useRef<HTMLElement>(null!);
 
   const [isFaded, setFaded] = useState<boolean>(false);
-
-  const handleScroll = (e: any) => {
-    const window = e.currentTarget;
-
-    if (scrollRef > window.scrollY) {
-      setFaded(false);
-    }
-
-    if (scrollRef < window.scrollY) {
-      setFaded(true);
-    }
-
-    scrollRef = window.scrollY;
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  });
 
   const workCases = images.map((image: IImage) => {
     const { href, workInformation } = getItemFromImage(
@@ -172,18 +132,6 @@ const IndexPage: React.FC = () => {
     );
   });
 
-  const animationHero = useSpring({
-    config: {
-      duration: 500,
-      mass: 500,
-      friction: 100,
-      tension: 300,
-      easing: easings.easeCubicInOut,
-    },
-    transform: isFaded ? 'translate3d(0,-500px,0)' : 'translate3d(0,0px,0)',
-    opacity: isFaded ? 0 : 1,
-  });
-
   return (
     <Layout>
       <SEO
@@ -193,59 +141,66 @@ const IndexPage: React.FC = () => {
         lang="en"
         meta={[]}
       />
-      <Section id="home" isFaded={isFaded}>
-        <animated.div
-          style={{
-            ...animationHero,
-            width: '100%',
-            marginTop: '60px',
+      <Section id="home">
+        <Greeting>
+          Hi friend{' '}
+          <span role="img" aria-label="hand">
+            👋
+          </span>
+          ,
+        </Greeting>
+        <Hero />
+        <Button
+          onClick={() => {
+            window.scrollTo({
+              behavior: 'smooth',
+              top: projectSectionRef.current.offsetTop,
+            });
+            setFaded(true);
           }}
         >
-          <Greeting>
-            Hi friend{' '}
-            <span role="img" aria-label="hand">
-              👋
-            </span>
-            ,
-          </Greeting>
-          <Hero />
-        </animated.div>
-        <Button>
-          <ButtonTextContainer>
-            <span>Scroll down</span>
-            <span>to discover more</span>
-          </ButtonTextContainer>
-          <MdMouse />
+          See my work
         </Button>
       </Section>
-      <Section id="projects">
-        <WorkCasesContainer>
-          <Trail
-            config={{
-              mass: 1,
-              friction: 30,
-              tension: 400,
-              delay: !isFaded ? 0 : 900,
-            }}
-            items={workCases}
-            keys={item => item.key}
-            from={{
-              opacity: 0,
-              transform: isFaded ? 'translateY(5%)' : 'translateY(-50%)',
-            }}
-            to={{
-              opacity: isFaded ? 1 : 0,
-              transform: isFaded ? 'translateY(5%)' : 'translateY(-50%)',
-            }}
-          >
-            {item => props => (
-              <animated.div style={{ ...props, margin: '10px' }}>
-                {item}
-              </animated.div>
-            )}
-          </Trail>
-        </WorkCasesContainer>
-      </Section>
+      <Waypoint
+        onEnter={() => {
+          setFaded(true);
+          console.log('hit enter');
+        }}
+        onLeave={() => {
+          setFaded(false);
+          console.log('hit leave');
+        }}
+      >
+        <Section id="projects" ref={projectSectionRef}>
+          <WorkCasesContainer>
+            <Trail
+              config={{
+                mass: 1,
+                friction: 30,
+                tension: 400,
+                delay: !isFaded ? 0 : 500,
+              }}
+              items={workCases}
+              keys={item => item.key}
+              from={{
+                opacity: 0,
+                transform: isFaded ? 'translateY(0%)' : 'translateY(50%)',
+              }}
+              to={{
+                opacity: isFaded ? 1 : 0,
+                transform: isFaded ? 'translateY(0%)' : 'translateY(50%)',
+              }}
+            >
+              {item => props => (
+                <animated.div style={{ ...props, margin: '10px' }}>
+                  {item}
+                </animated.div>
+              )}
+            </Trail>
+          </WorkCasesContainer>
+        </Section>
+      </Waypoint>
     </Layout>
   );
 };

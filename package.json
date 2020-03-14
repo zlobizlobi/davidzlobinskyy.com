@@ -36,7 +36,9 @@
     "react-helmet": "^5.2.1",
     "react-icons": "^3.9.0",
     "react-spring": "^8.0.27",
-    "styled-components": "^5.0.1"
+    "react-waypoint": "^9.0.2",
+    "styled-components": "^5.0.1",
+    "ts-loader": "^6.2.1"
   },
   "devDependencies": {
     "@types/react": "^16.9.23",

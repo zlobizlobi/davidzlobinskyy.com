@@ -18,7 +18,7 @@ export const Name = styled(Text)`
 
 export const Developer = styled(Text)`
   font-size: 24px;
-  margin: 25px 0 60px 0;
+  margin: 25px 0 30px 0;
   text-align: center;
   max-width: 230px;
 

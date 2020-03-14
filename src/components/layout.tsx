@@ -11,7 +11,6 @@ export const Layout: React.FC<{}> = ({ children }) => {
   useLayoutEffect(() => {
     const localTheme = localStorage.getItem('theme');
 
-    console.log(localTheme);
     if (localTheme && localTheme !== appTheme) {
       setAppTheme(localTheme);
     }
