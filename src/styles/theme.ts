@@ -13,5 +13,11 @@ export const darkTheme = {
     secondary: '#fff',
     thirtiary: '#d3d3d3',
     body: '#ed1c24',
+    opacityReduced: {
+      sm: '0.8',
+      md: '0.6',
+      lg: '0.4',
+      xl: '0.2',
+    },
   },
 };

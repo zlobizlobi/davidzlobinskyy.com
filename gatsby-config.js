@@ -21,7 +21,9 @@ module.exports = {
       options: {
         components: path.join(__dirname, 'src/components'),
         styles: path.join(__dirname, 'src/styles'),
+        pageStyles: path.join(__dirname, 'src/styles/pageStyles'),
         utils: path.join(__dirname, 'src/utils'),
+        pages: path.join(__dirname, 'src/pages'),
       },
     },
     {
@@ -36,7 +38,6 @@ module.exports = {
       options: {
         test: /\.ts$|\.tsx$/,
         exclude: /(node_modules|cache|public)/,
-        loader: 'ts-loader',
       },
     },
     {

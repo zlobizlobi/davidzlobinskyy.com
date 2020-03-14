@@ -1,87 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import styled from 'styled-components';
 import { FluidObject } from 'gatsby-image';
 import { animated } from 'react-spring';
 import { Trail } from 'react-spring/renderprops';
-import { Layout, Hero, Text, WorkCase } from 'components';
-import { media } from 'styles';
+import { Layout, Hero, WorkCase, SEO } from 'components';
 import { getItemFromImage } from 'utils';
-import { SEO } from '../components';
 import { Waypoint } from 'react-waypoint';
-
-const Section = styled.section`
-  padding: 0 15px 0 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  &:first-child {
-    margin: 50px auto 100px auto;
-    max-width: 900px;
-    height: 100vh;
-    box-sizing: content-box;
-  }
-
-  &:last-child {
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    padding: 0 0 50px 0;
-
-    ${media.md(`
-      padding: 50px 0 200px 0;
-    `)}
-  }
-`;
-
-const Greeting = styled(Text)`
-  align-self: flex-start;
-  margin: 30px 0;
-  font-size: 20px;
-  ${media.md(`
-      font-size: 30px;
-      padding-left: 100px;
-  `)}
-`;
-
-const WorkCasesContainer = styled.span`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-
-  > a {
-    &:last-child {
-      margin: 0;
-    }
-
-    margin-bottom: 20px;
-
-    ${media.sm(`
-      margin: 10px;
-    `)}
-  }
-`;
-
-export const Button = styled.button`
-  display: none;
-
-  ${media.md(`
-    border: 1px solid red;
-    padding: 7.5px 12.5px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    margin-top: 100px;
-    transition: all 0.2s ease;
-
-
-    :hover {
-      background-color: ${({ theme }) => theme.color.secondary};
-    }
-  `)}
-`;
+import { Section, Button, Greeting, WorkCasesContainer } from 'pageStyles';
 
 interface IImage {
   id: string;
@@ -91,7 +16,7 @@ interface IImage {
   };
 }
 
-const IndexPage: React.FC = () => {
+const IndexPage: React.FC<{}> = () => {
   const data = useStaticQuery(graphql`
     query MyQuery {
       allFile {
