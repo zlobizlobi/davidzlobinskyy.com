@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Overlay, Text, Anchor, Img } from './styles';
+import { Container, Overlay, Text, Img } from './styles';
 import { FluidObject } from 'gatsby-image';
 
 interface IProps {
@@ -12,12 +12,12 @@ export const WorkCase: React.FC<IProps> = ({
   workInformation,
   ...props
 }) => (
-  <Anchor {...props}>
+  <a {...props}>
     <Container>
       <Img fluid={imgSrc} />
       <Overlay>
         <Text>{workInformation}</Text>
       </Overlay>
     </Container>
-  </Anchor>
+  </a>
 );

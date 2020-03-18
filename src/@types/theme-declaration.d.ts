@@ -1,8 +1,8 @@
 import { lightTheme, darkTheme } from 'styles';
 
-type DarkThemeInterface = typeof darkTheme;
-type LightThemeInterface = typeof lightTheme;
+type DarkTheme = typeof darkTheme;
+type LightTheme = typeof lightTheme;
 
 declare module 'styled-components' {
-  interface DefaultTheme extends LightThemeInterface, DarkThemeInterface {}
+  interface DefaultTheme extends LightTheme, DarkTheme {}
 }

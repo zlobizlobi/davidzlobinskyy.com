@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 import { Text as TextComponent } from '../text';
 import ImgComponent from 'gatsby-image';
-
-export const Anchor = styled.a`
-  margin-bottom: 15px;
-`;
+import { media } from 'styles';
 
 export const Overlay = styled.span`
   position: absolute;
@@ -36,12 +33,13 @@ export const Container = styled.span`
   position: relative;
   display: flex;
   justify-content: center;
-  border: 1px solid ${({ theme }) => theme.color.secondary};
+  border: 1px solid rgba(237, 28, 36, 0.3);
   border-radius: 2px;
   padding: 25px 30px;
   box-sizing: content-box;
   background-color: transparent;
   transition: all 0.2s ease;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 
   :hover {
     ${Overlay} {
@@ -52,6 +50,10 @@ export const Container = styled.span`
       opacity: 1;
     }
   }
+
+  ${media.md(`
+    width: unset;
+  `)}
 `;
 
 export const Img = styled(ImgComponent).attrs({

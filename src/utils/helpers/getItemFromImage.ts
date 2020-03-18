@@ -24,7 +24,8 @@ export const getItemFromImage = (src: string): IItem => {
     case 'lenny.png':
       return {
         href: 'https://lenny.tattoo',
-        workInformation: 'https://iculture.nl',
+        workInformation:
+          'In exchange for a breathtaking tattoo I made a portfolio website for acknowledged tattoo artist Linards Kristovskis.',
       };
     case 'tatjana.png':
       return {
@@ -46,7 +47,8 @@ export const getItemFromImage = (src: string): IItem => {
     case 'simpel.png':
       return {
         href: 'https://bestel.simpel.nl/sim-only',
-        workInformation: 'https://iculture.nl',
+        workInformation:
+          "Being part of the Simpel team within Enrise I helped improving all the order flows on Simpel's current website.",
       };
     default:
       return {

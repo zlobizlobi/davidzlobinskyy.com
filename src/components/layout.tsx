@@ -5,7 +5,7 @@ import { GlobalStyle, darkTheme, lightTheme } from 'styles';
 import { ThemeProvider } from 'styled-components';
 import { ThemeSwitch } from './themeSwitch';
 
-export const Layout: React.FC<{}> = ({ children }) => {
+export const Layout: React.FC = ({ children }: any) => {
   const [appTheme, setAppTheme] = useState('light');
 
   useLayoutEffect(() => {

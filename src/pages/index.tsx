@@ -6,7 +6,14 @@ import { Trail } from 'react-spring/renderprops';
 import { Layout, Hero, WorkCase, SEO } from 'components';
 import { getItemFromImage } from 'utils';
 import { Waypoint } from 'react-waypoint';
-import { Section, Button, Greeting, WorkCasesContainer } from 'pageStyles';
+import {
+  Section,
+  Button,
+  Greeting,
+  WorkCasesContainer,
+  Heading,
+} from 'pageStyles';
+import autoPhoto from '../assets/autoPhoto.jpeg';
 
 interface IImage {
   id: string;
@@ -16,7 +23,10 @@ interface IImage {
   };
 }
 
-const IndexPage: React.FC<{}> = () => {
+const SEO_DESCRIPTION =
+  'My name is David Zlobinskyy. I do Frontend Webdevelopment. Having 2 years of experience, I like designing web-applications & building them using React and Gatsby.';
+
+const IndexPage: React.FC = () => {
   const data = useStaticQuery(graphql`
     query MyQuery {
       allFile {
@@ -57,15 +67,13 @@ const IndexPage: React.FC<{}> = () => {
     );
   });
 
+  const handleWaypointScroll = () => {
+    setFaded(!isFaded);
+  };
+
   return (
     <Layout>
-      <SEO
-        title="Hello"
-        description="My name is David Zlobinskyy. I do Frontend Webdevelopment. Having 2 years of experience, I like designing web-applications &
-        building them using React and Gatsby."
-        lang="en"
-        meta={[]}
-      />
+      <SEO title="Hello" description={SEO_DESCRIPTION} image={autoPhoto} />
       <Section id="home">
         <Greeting>
           Hi friend{' '}
@@ -81,30 +89,21 @@ const IndexPage: React.FC<{}> = () => {
               behavior: 'smooth',
               top: projectSectionRef.current.offsetTop,
             });
-            setFaded(true);
           }}
         >
           See my work
         </Button>
       </Section>
-      <Waypoint
-        onEnter={() => {
-          setFaded(true);
-          console.log('hit enter');
-        }}
-        onLeave={() => {
-          setFaded(false);
-          console.log('hit leave');
-        }}
-      >
+      <Waypoint onEnter={handleWaypointScroll} onLeave={handleWaypointScroll}>
         <Section id="projects" ref={projectSectionRef}>
+          <Heading>Work</Heading>
           <WorkCasesContainer>
             <Trail
               config={{
                 mass: 1,
                 friction: 30,
                 tension: 400,
-                delay: !isFaded ? 0 : 500,
+                delay: isFaded ? 500 : 0,
               }}
               items={workCases}
               keys={item => item.key}
@@ -118,9 +117,9 @@ const IndexPage: React.FC<{}> = () => {
               }}
             >
               {item => props => (
-                <animated.div style={{ ...props, margin: '10px' }}>
+                <animated.span style={{ ...props, margin: '10px' }}>
                   {item}
-                </animated.div>
+                </animated.span>
               )}
             </Trail>
           </WorkCasesContainer>
