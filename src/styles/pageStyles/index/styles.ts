@@ -23,7 +23,7 @@ export const Section = styled.section`
     padding: 0 15px 50px 15px;
 
     ${media.md(`
-      padding: 50px 0 250px  0;
+      padding: 100px 0 100px  0;
     `)}
   }
 `;
@@ -82,12 +82,38 @@ export const Button = styled.button`
 
 export const Heading = styled(HeadingComponent)`
   &&& {
-    display: block;
-    margin-bottom: 35px;
-    font-weight: 200;
+    &:nth-child(1) {
+      display: block;
+      margin-bottom: 20px;
+      font-weight: 200;
 
-    ${media.sm(`
+      ${media.sm(`
       display: none;
     `)}
+    }
+
+    &:nth-child(2) {
+      display: none;
+      margin-bottom: 10px;
+
+      ${media.sm(`
+      display: inline;
+      padding-left: 50px;
+    `)}
+    }
   }
+`;
+
+export const SubHeading = styled(HeadingComponent)`
+  display: none;
+  color: ${({ theme }) => theme.color.secondary};
+
+  ${media.lg(`
+    display: block;
+    color: #f04248;
+    padding-left: 75px; 
+    opacity: 0.6;
+    font-size: 20px;
+    margin-bottom: 45px;
+  `)}
 `;

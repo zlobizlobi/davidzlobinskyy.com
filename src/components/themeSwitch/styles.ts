@@ -8,7 +8,7 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   position: fixed;
-  top: calc(100vh - 280px);
+  bottom: 25px;
   right: 15px;
   z-index: 3;
   box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.1);

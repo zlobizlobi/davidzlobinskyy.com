@@ -12,6 +12,7 @@ import {
   Greeting,
   WorkCasesContainer,
   Heading,
+  SubHeading,
 } from 'pageStyles';
 import autoPhoto from '../assets/autoPhoto.jpeg';
 
@@ -91,12 +92,16 @@ const IndexPage: React.FC = () => {
             });
           }}
         >
-          See my work
+          see my work
         </Button>
       </Section>
       <Waypoint onEnter={handleWaypointScroll} onLeave={handleWaypointScroll}>
         <Section id="projects" ref={projectSectionRef}>
           <Heading>Work</Heading>
+          <Heading>see my work</Heading>
+          <SubHeading>
+            hover or click on the cards for more information about a project
+          </SubHeading>
           <WorkCasesContainer>
             <Trail
               config={{
