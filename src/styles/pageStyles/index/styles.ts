@@ -77,6 +77,7 @@ export const Button = styled.button`
     margin-top: 100px;
     transition: all 0.2s ease;
     background-color: transparent;
+    font-size: 14px;
   `)}
 `;
 
