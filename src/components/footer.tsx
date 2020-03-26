@@ -37,11 +37,11 @@ export const Footer: React.FC<IProps> = ({ appTheme }) => (
   <FooterComponent>
     <Container>
       <Text>
-        Made with &nbsp;
+        Made with&nbsp;
         <span role="img" aria-label={appTheme ? 'Red heart' : 'White heart'}>
-          ❤️ &nbsp;
+          ❤️&nbsp;
         </span>
-        in &nbsp;
+        in&nbsp;
         <img src={amsterdamIcon} style={{ width: '25px', height: '25px' }} />
       </Text>
       <Text>Copyright © 2020 David Zlobinskyy. All rights reserved.</Text>

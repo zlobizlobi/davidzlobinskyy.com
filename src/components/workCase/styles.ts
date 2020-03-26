@@ -16,24 +16,18 @@ export const Overlay = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-y: scroll;
-  padding: 10px;
 `;
 
 export const Text = styled(TextComponent)`
   color: ${({ theme }) => theme.color.primary};
   font-size: 14px;
-  position: absolute;
-  opacity: 0;
-  z-index: 2;
-  text-decoration: none;
 `;
 
 export const Container = styled.span`
   position: relative;
   display: flex;
   justify-content: center;
-  border: 1px solid rgba(237, 28, 36, 0.3);
+  border: 2px solid ${({ theme }) => theme.color.secondary};
   border-radius: 2px;
   padding: 25px 30px;
   box-sizing: content-box;

@@ -98,7 +98,7 @@ const IndexPage: React.FC = () => {
       <Waypoint onEnter={handleWaypointScroll} onLeave={handleWaypointScroll}>
         <Section id="projects" ref={projectSectionRef}>
           <Heading>Work</Heading>
-          <Heading>see my work</Heading>
+          <Heading>See my work</Heading>
           <SubHeading>
             hover or click on the cards for more information about a project
           </SubHeading>

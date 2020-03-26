@@ -98,7 +98,7 @@ export const Heading = styled(HeadingComponent)`
       margin-bottom: 10px;
 
       ${media.sm(`
-      display: inline;
+      display: inline
       padding-left: 50px;
     `)}
     }
@@ -107,11 +107,10 @@ export const Heading = styled(HeadingComponent)`
 
 export const SubHeading = styled(HeadingComponent)`
   display: none;
-  color: ${({ theme }) => theme.color.secondary};
+  color: ${({ theme }) => theme.color.opaque};
 
   ${media.lg(`
     display: block;
-    color: #f04248;
     padding-left: 75px; 
     opacity: 0.6;
     font-size: 20px;
