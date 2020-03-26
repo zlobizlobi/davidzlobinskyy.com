@@ -92,12 +92,12 @@ const IndexPage: React.FC = () => {
             });
           }}
         >
-          see my work
+          See my work
         </Button>
       </Section>
       <Waypoint onEnter={handleWaypointScroll} onLeave={handleWaypointScroll}>
         <Section id="projects" ref={projectSectionRef}>
-          <Heading>Work</Heading>
+          <Heading>Projects</Heading>
           <Heading>See my work</Heading>
           <SubHeading>
             hover or click on the cards for more information about a project
@@ -111,11 +111,7 @@ const IndexPage: React.FC = () => {
                 delay: isFaded ? 500 : 0,
               }}
               items={workCases}
-              keys={item => item.key}
-              from={{
-                opacity: 0,
-                transform: isFaded ? 'translateY(0%)' : 'translateY(50%)',
-              }}
+              keys={({ props: { href } }) => href}
               to={{
                 opacity: isFaded ? 1 : 0,
                 transform: isFaded ? 'translateY(0%)' : 'translateY(50%)',

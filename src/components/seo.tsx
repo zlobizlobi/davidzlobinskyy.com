@@ -7,6 +7,7 @@ interface Image {
   height: string;
   src: string;
 }
+
 interface IProps {
   description: string;
   meta?: Array<{ name: string; content: string }>;

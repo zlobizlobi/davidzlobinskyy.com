@@ -44,6 +44,7 @@ export const WorkCasesContainer = styled.span`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  max-width: 1300px;
 
   > a {
     &:last-child {
@@ -86,7 +87,7 @@ export const Heading = styled(HeadingComponent)`
     &:nth-child(1) {
       display: block;
       margin-bottom: 20px;
-      font-weight: 200;
+      font-weight: 400;
 
       ${media.md(`
       display: none;
