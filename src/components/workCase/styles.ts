@@ -24,15 +24,12 @@ export const Text = styled(TextComponent)`
 `;
 
 export const Container = styled.span`
-  position: relative;
   display: flex;
   justify-content: center;
   border: 2px solid ${({ theme }) => theme.color.secondary};
-  border-radius: 2px;
   padding: 25px 30px;
-  box-sizing: content-box;
   background-color: transparent;
-  transition: all 0.2s ease;
+  transition: opacity 0.2s ease;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 
   :hover {
