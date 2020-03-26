@@ -13,7 +13,7 @@ export const getItemFromImage = (src: string): IItem => {
       return {
         href: 'https://iculture.nl',
         workInformation:
-          'Developed three widgets for the users of the iCulture WordPress website. The widgets provide the user with a user interface for comparing Apple products from big Dutch webshops.',
+          'Developed three widgets for the iCulture website. The widgets are different interfaces for comparing Apple products from big Dutch webshops.',
       };
     case 'foleon.png':
       return {

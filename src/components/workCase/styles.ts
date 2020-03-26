@@ -16,6 +16,7 @@ export const Overlay = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 10px;
 `;
 
 export const Text = styled(TextComponent)`
