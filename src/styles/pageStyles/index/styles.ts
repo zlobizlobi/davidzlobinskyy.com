@@ -63,7 +63,7 @@ export const Button = styled.button`
   display: none;
 
   color: ${({ theme }: DefaultTheme) => theme.color.secondary};
-  border: 1px solid ${({ theme }: DefaultTheme) => theme.color.secondary};
+  border: 2px solid ${({ theme }: DefaultTheme) => theme.color.secondary};
 
   :hover {
     color: ${({ theme }: DefaultTheme) => theme.color.primary};
