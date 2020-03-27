@@ -57,3 +57,8 @@ export const Button = styled.button.attrs({ type: 'submit' })`
 export const BoldHighlight = styled.span`
   font-weight: 400;
 `;
+
+export const SubmitMessage = styled.span`
+  color: ${({ theme }) => theme.color.secondary};
+  align-self: center;
+`;
