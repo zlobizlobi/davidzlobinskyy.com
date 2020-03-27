@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Text as TextComponent } from './text';
-import amsterdamIcon from '../assets/holland.svg';
+import amsterdamIcon from '../images/holland.svg';
 
 export const FooterComponent = styled.footer`
   display: flex;
@@ -38,6 +38,6 @@ export const Footer: React.FC<IProps> = ({ appTheme }) => (
       in&nbsp;
       <img src={amsterdamIcon} style={{ width: '25px', height: '25px' }} />
     </Text>
-    <Text>Copyright © 2020 David Zlobinskyy. All rights reserved.</Text>
+    <Text>© 2020 David Zlobinskyy.</Text>
   </FooterComponent>
 );

@@ -6,3 +6,4 @@ export { Hero } from './hero';
 export { Section } from './section';
 export { Heading } from './heading';
 export { WorkCase } from './workCase';
+export { Form } from './form';

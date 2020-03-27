@@ -95,5 +95,7 @@ export const GlobalStyle = createGlobalStyle`
     
     textarea {
         resize: none;
+        min-height: 130px;
+
     }
 `;

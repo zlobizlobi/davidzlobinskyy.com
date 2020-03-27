@@ -24,14 +24,13 @@ module.exports = {
         pageStyles: path.join(__dirname, 'src/styles/pageStyles'),
         utils: path.join(__dirname, 'src/utils'),
         pages: path.join(__dirname, 'src/pages'),
-        assets: path.join(__dirname, 'src/assets'),
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/assets/images`,
+        path: `${__dirname}/src/images/`,
       },
     },
     {
@@ -50,7 +49,7 @@ module.exports = {
         background_color: `#fff`,
         theme_color: `#fff`,
         display: `fullscreen`,
-        icon: `src/assets/favicon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-typescript`,

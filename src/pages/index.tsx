@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
 import { animated } from 'react-spring';
 import { Trail } from 'react-spring/renderprops';
@@ -14,59 +14,54 @@ import {
   Heading,
   SubHeading,
 } from 'pageStyles';
-import autoPhoto from '../assets/autoPhoto.jpeg';
+import autoPhoto from '../images/autoPhoto.jpeg';
 
 interface IImage {
-  id: string;
   childImageSharp: {
-    id: string;
     fluid: FluidObject;
   };
+}
+
+interface IGraphQlImage {
+  [name: string]: IImage;
+}
+
+interface IProps {
+  data: IGraphQlImage;
 }
 
 const SEO_DESCRIPTION =
   'My name is David Zlobinskyy. I do Frontend Webdevelopment. Having 2 years of experience, I like designing web-applications & building them using React and Gatsby.';
 
-const IndexPage: React.FC = () => {
-  const data = useStaticQuery(graphql`
-    query MyQuery {
-      allFile {
-        nodes {
-          childImageSharp {
-            fluid(quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    }
-  `);
-
-  const {
-    allFile: { nodes: images },
-  } = data;
-
+const IndexPage: React.FC<IProps> = ({ data }) => {
   const projectSectionRef = useRef<HTMLElement>(null!);
 
   const [isFaded, setFaded] = useState<boolean>(false);
 
-  const workCases = images.map((image: IImage) => {
-    const { href, workInformation } = getItemFromImage(
-      image.childImageSharp.fluid.src
-    );
+  const queryObjectWithoutKeys = Object.values(data).map(
+    (value: IImage) => value
+  );
 
-    return (
-      <WorkCase
-        href={href}
-        key={image.id}
-        target="_blank"
-        rel="noopener noreferrer"
-        alt={workInformation}
-        imgSrc={image.childImageSharp.fluid}
-        workInformation={workInformation}
-      />
-    );
-  });
+  const workCases = queryObjectWithoutKeys.map(
+    (image: IImage, index: number) => {
+      console.log(image);
+      const { href, workInformation } = getItemFromImage(
+        image.childImageSharp.fluid.src
+      );
+
+      return (
+        <WorkCase
+          href={href}
+          key={index}
+          target="_blank"
+          rel="noopener noreferrer"
+          alt={workInformation}
+          imgSrc={image.childImageSharp.fluid}
+          workInformation={workInformation}
+        />
+      );
+    }
+  );
 
   const handleWaypointScroll = () => {
     setFaded(!isFaded);
@@ -129,5 +124,41 @@ const IndexPage: React.FC = () => {
     </Layout>
   );
 };
+
+export const image = graphql`
+  fragment image on File {
+    childImageSharp {
+      fluid(quality: 100) {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+`;
+
+export const query = graphql`
+  query Images {
+    image1: file(relativePath: { eq: "enable.png" }) {
+      ...image
+    }
+    image2: file(relativePath: { eq: "foleon.png" }) {
+      ...image
+    }
+    image3: file(relativePath: { eq: "iculture.png" }) {
+      ...image
+    }
+    image4: file(relativePath: { eq: "lenny.png" }) {
+      ...image
+    }
+    image5: file(relativePath: { eq: "simpel.png" }) {
+      ...image
+    }
+    image6: file(relativePath: { eq: "tatjana.png" }) {
+      ...image
+    }
+    image7: file(relativePath: { eq: "young-socials.png" }) {
+      ...image
+    }
+  }
+`;
 
 export default IndexPage;

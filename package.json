@@ -6,7 +6,9 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@types/styled-components": "^5.0.1",
+    "@types/yup": "^0.26.33",
     "babel-plugin-styled-components": "^1.10.7",
+    "formik": "^2.1.4",
     "gatsby": "^2.19.7",
     "gatsby-image": "^2.2.39",
     "gatsby-plugin-anchor-links": "^1.1.0",
@@ -29,7 +31,8 @@
     "react-icons": "^3.9.0",
     "react-spring": "^8.0.27",
     "react-waypoint": "^9.0.2",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "yup": "^0.28.3"
   },
   "devDependencies": {
     "@types/react": "^16.9.23",

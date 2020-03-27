@@ -53,9 +53,13 @@ export const Highlight = styled.a`
 
 export const IconContainer = styled.div`
   display: flex;
-  margin-top: 30px;
+  margin-top: 45px;
 
-  > a:first-child {
-    margin-right: 10px;
+  > a {
+    margin-right: 15px;
+  }
+
+  > a:last-child {
+    margin: 0;
   }
 `;

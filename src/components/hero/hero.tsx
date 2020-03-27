@@ -8,7 +8,7 @@ import {
   IconContainer,
 } from './styles';
 import { IconContext } from 'react-icons';
-import { FiLinkedin, FiGithub } from 'react-icons/fi';
+import { FaSpotify, FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa';
 
 export const Hero: React.FC = () => (
   <IconContext.Provider
@@ -51,14 +51,28 @@ export const Hero: React.FC = () => (
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FiLinkedin />
+          <FaLinkedin />
         </a>
         <a
           href="https://github.com/zlobizlobi"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FiGithub />
+          <FaGithub />
+        </a>
+        <a
+          href="https://instagram.com/zlobbbi"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaInstagram />
+        </a>
+        <a
+          href="https://open.spotify.com/user/hhh0nkzioltxef8v13g903hhk?si=Zldgm6fiQs2_ipJhd14tVA"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaSpotify />
         </a>
       </IconContainer>
     </Container>
