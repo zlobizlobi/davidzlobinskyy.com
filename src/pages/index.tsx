@@ -44,7 +44,6 @@ const IndexPage: React.FC<IProps> = ({ data }) => {
 
   const workCases = queryObjectWithoutKeys.map(
     (image: IImage, index: number) => {
-      console.log(image);
       const { href, workInformation } = getItemFromImage(
         image.childImageSharp.fluid.src
       );
