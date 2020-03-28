@@ -64,7 +64,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html, body  {
-        height: 100%;
         font-family: 'Jost', sans-serif;
         scroll-behavior: smooth;
         background-color: ${({ theme }) => theme.color.body};
@@ -74,18 +73,9 @@ export const GlobalStyle = createGlobalStyle`
             color: ${({ theme }) => theme.color.primary};
         }
     }
-
-    body {
-        display: flex;
-        flex-direction: column;
-    }
-
-    main {
-        flex-grow: 1;
-    }
-
-    header, main, footer {
-        flex-shrink: 0;
+ 
+    body, html {
+        min-height: 100%;
     }
 
     button, textarea, input {
@@ -96,6 +86,5 @@ export const GlobalStyle = createGlobalStyle`
     textarea {
         resize: none;
         min-height: 130px;
-
     }
 `;

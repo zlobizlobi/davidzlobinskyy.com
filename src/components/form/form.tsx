@@ -38,7 +38,7 @@ export const Form: React.FC = () => {
 
   const handleSubmit = (
     values: IFormValues,
-    { resetForm }: { resetForm: () => void }
+    { resetForm }: { resetForm: ({}) => void }
   ) => {
     console.log(values);
     return fetch('https://api.formik.com/submit/david-zlobinskyy/contact', {

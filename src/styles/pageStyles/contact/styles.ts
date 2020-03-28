@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { DefaultTheme } from 'styled-components';
 import { media } from 'styles';
 import { Heading as HeadingComponent } from 'components';
 import Img from 'gatsby-image';
@@ -9,13 +9,14 @@ export const FormContainer = styled.div`
   align-items: center;
   padding: 30px;
   margin: 100px 15px;
-  border: 2px solid ${({ theme }) => theme.color.secondary};
+  border: none;
   width: 450px;
-  box-shadow: 13px 15px 23px -22px rgba(0, 0, 0, 0.75);
 
   ${media.md(`
     margin: 100px 0;
     padding: 30px;
+    border: 2px solid black;
+    box-shadow: 13px 15px 23px -22px rgba(0, 0, 0, 0.75);
   `)};
 `;
 

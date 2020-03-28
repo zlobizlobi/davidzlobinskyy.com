@@ -112,7 +112,7 @@ const IndexPage: React.FC<IProps> = ({ data }) => {
               }}
             >
               {item => props => (
-                <animated.span style={{ ...props, margin: '10px' }}>
+                <animated.span style={{ ...props, margin: '15px' }}>
                   {item}
                 </animated.span>
               )}
