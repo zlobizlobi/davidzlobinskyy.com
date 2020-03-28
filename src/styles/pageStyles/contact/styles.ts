@@ -58,5 +58,6 @@ export const Image = styled(Img).attrs({
   ${media.md(`
      width: 200px;
      height: 200px;
+     border-radius: 50%;
   `)}
 `;

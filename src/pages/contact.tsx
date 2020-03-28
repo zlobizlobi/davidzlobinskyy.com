@@ -45,7 +45,7 @@ const Contact: React.FC<IProps> = ({ data }) => (
 
 export const query = graphql`
   query Image {
-    file(relativePath: { eq: "autoPhotoBg.png" }) {
+    file(relativePath: { eq: "autoMe.png" }) {
       childImageSharp {
         fluid(quality: 100) {
           ...GatsbyImageSharpFluid_tracedSVG
