@@ -25,7 +25,7 @@ export const getItemFromImage = (src: string): IItem => {
       return {
         href: 'https://lenny.tattoo',
         workInformation:
-          'In exchange for a breathtaking tattoo I made a portfolio website for acknowledged tattoo artist Linards Kristovskis.',
+          'In exchange for a breathtaking tattoo I made a portfolio website for Lithuanian/Norwegian acknowledged tattoo artist Linards Kristovskis.',
       };
     case 'tatjana.png':
       return {

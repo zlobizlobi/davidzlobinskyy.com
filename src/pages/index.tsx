@@ -14,7 +14,7 @@ import {
   Heading,
   SubHeading,
 } from 'pageStyles';
-import autoPhoto from 'images/autoPhotoBg.png';
+import autoPhoto from 'images/autoMe.png';
 
 interface IImage {
   childImageSharp: {
@@ -65,7 +65,7 @@ const IndexPage: React.FC<IProps> = ({ data }) => {
   const handleWaypointScroll = () => {
     setFaded(!isFaded);
   };
-
+  // DONE CHECK
   return (
     <Layout>
       <SEO title="Hello" description={SEO_DESCRIPTION} image={autoPhoto} />

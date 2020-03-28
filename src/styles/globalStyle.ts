@@ -80,7 +80,6 @@ export const GlobalStyle = createGlobalStyle`
 
     button, textarea, input {
         font-family: inherit;
-        appearance: none;
     }
     
     textarea {

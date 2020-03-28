@@ -10,6 +10,8 @@ import {
 import { IconContext } from 'react-icons';
 import { FaSpotify, FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa';
 
+//DONE CHECK
+
 export const Hero: React.FC = () => (
   <IconContext.Provider
     value={{
@@ -19,7 +21,7 @@ export const Hero: React.FC = () => (
   >
     <Container>
       <Name>my name is David Zlobinskyy,</Name>
-      <Name style={{ marginTop: '20px' }}>some call me zlob,</Name>
+      <Name>some call me zlob,</Name>
       <Developer>I do Frontend Webdevelopment</Developer>
       <Biography>
         Having 2 years of experience, I like designing web-applications &

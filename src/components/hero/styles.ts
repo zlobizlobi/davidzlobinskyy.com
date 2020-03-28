@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Text } from '../text';
 import { media } from 'styles';
 
+// CHECK DONE
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -10,6 +11,10 @@ export const Container = styled.div`
 
 export const Name = styled(Text)`
   font-size: 19px;
+
+  &:nth-child(2) {
+    margin-top: 20px;
+  }
 
   ${media.md(`
       font-size: 22px;

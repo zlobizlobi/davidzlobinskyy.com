@@ -40,7 +40,6 @@ export const Form: React.FC = () => {
     values: IFormValues,
     { resetForm }: { resetForm: ({}) => void }
   ) => {
-    console.log(values);
     return fetch('https://api.formik.com/submit/david-zlobinskyy/contact', {
       method: 'POST',
       headers: {

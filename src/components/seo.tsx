@@ -42,9 +42,6 @@ export const SEO: React.FC<IProps> = ({
 
   const metaImage = `${site.siteMetadata.siteUrl}${image}`;
 
-  console.log(image);
-  console.log(site);
-  console.log(metaImage);
   return (
     <Helmet
       htmlAttributes={{

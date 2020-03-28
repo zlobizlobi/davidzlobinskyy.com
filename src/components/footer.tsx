@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Text as TextComponent } from './text';
-import amsterdamIcon from '../images/holland.svg';
+import amsterdamIcon from 'images/holland.svg';
 
 export const FooterComponent = styled.footer`
   display: flex;
@@ -19,6 +19,7 @@ const Text = styled(TextComponent)`
   align-items: center;
   text-align: center;
   font-size: 14px;
+
   &:first-child {
     margin-bottom: 10px;
   }
@@ -27,6 +28,8 @@ const Text = styled(TextComponent)`
 interface IProps {
   appTheme: string;
 }
+
+// CHECK DONE
 
 export const Footer: React.FC<IProps> = ({ appTheme }) => (
   <FooterComponent>

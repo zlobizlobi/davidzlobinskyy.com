@@ -1,17 +1,16 @@
 import React from 'react';
 import { SEO, Form, Layout } from 'components';
-import autoPhoto from 'images/autoPhotoBg.png';
-
+import autoPhoto from 'images/autoMe.png';
 import {
   FormContainer,
   FormHeading,
   Image,
-  HeadingContainer,
+  CTAContainer,
   Container,
+  Icon,
 } from 'pageStyles';
 import { FluidObject } from 'gatsby-image';
 import { graphql } from 'gatsby';
-import { FaEnvelopeOpen } from 'react-icons/fa';
 
 interface IProps {
   data: {
@@ -22,7 +21,7 @@ interface IProps {
     };
   };
 }
-
+// DONE CHECKING
 const Contact: React.FC<IProps> = ({ data }) => (
   <Layout>
     <SEO
@@ -33,10 +32,10 @@ const Contact: React.FC<IProps> = ({ data }) => (
     <Container>
       <FormContainer>
         <Image fluid={data.file.childImageSharp.fluid} />
-        <HeadingContainer>
+        <CTAContainer>
           <FormHeading>Write me a</FormHeading>
-          <FaEnvelopeOpen />
-        </HeadingContainer>
+          <Icon />
+        </CTAContainer>
         <Form />
       </FormContainer>
     </Container>

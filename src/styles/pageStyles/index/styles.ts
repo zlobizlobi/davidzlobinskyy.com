@@ -1,4 +1,4 @@
-import styled, { DefaultTheme } from 'styled-components';
+import styled from 'styled-components';
 import { media } from 'styles';
 import { Text, Heading as HeadingComponent } from 'components';
 
@@ -9,29 +9,20 @@ export const Section = styled.section`
   align-items: center;
 
   &:first-child {
-    margin: 50px auto 100px auto;
+    margin: 50px auto 0 auto;
     max-width: 900px;
     height: 100vh;
-    box-sizing: content-box;
   }
 
   &:last-child {
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    padding: 0 15px 50px 15px;
-
-    ${media.md(`
-      padding: 100px 0 100px  0;
-    `)}
+    padding: 100px 15px 100px 15px;
   }
 `;
-
+// DONE CHECK
 export const Greeting = styled(Text)`
   align-self: flex-start;
   margin: 50px 0 40px 0;
-  font-size: 20px;
+  font-size: 24px;
 
   ${media.md(`
       font-size: 30px;
@@ -42,66 +33,50 @@ export const Greeting = styled(Text)`
 export const WorkCasesContainer = styled.span`
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
   max-width: 1300px;
-
-  > a {
-    &:last-child {
-      margin: 0;
-    }
-
-    margin-bottom: 20px;
-
-    ${media.sm(`
-      margin: 10px;
-    `)}
-  }
 `;
 
 export const Button = styled.button`
   display: none;
-
-  color: ${({ theme }: DefaultTheme) => theme.color.secondary};
-  border: 2px solid ${({ theme }: DefaultTheme) => theme.color.secondary};
+  color: ${({ theme }) => theme.color.secondary};
+  border: 2px solid ${({ theme }) => theme.color.secondary};
 
   :hover {
-    color: ${({ theme }: DefaultTheme) => theme.color.primary};
-    background-color: ${({ theme }: DefaultTheme) => theme.color.secondary};
+    color: ${({ theme }) => theme.color.primary};
+    background-color: ${({ theme }) => theme.color.secondary};
   }
 
   ${media.md(`
-    padding: 7.5px 12.5px;
-    display: flex;
-    align-items: center;
+    padding: 7.5px 10px;
+    font-size: 14px;
+    display: inline;
     cursor: pointer;
-    margin-top: 100px;
+    margin-top: 35px;
     transition: all 0.2s ease;
     background-color: transparent;
-    font-size: 14px;
   `)}
 `;
 
 export const Heading = styled(HeadingComponent)`
   &&& {
+    margin-bottom: 20px;
+
     &:nth-child(1) {
       display: block;
-      margin-bottom: 20px;
-      font-weight: 400;
 
       ${media.md(`
-      display: none;
-    `)}
+        display: none;
+      `)}
     }
 
     &:nth-child(2) {
       display: none;
-      margin-bottom: 10px;
 
       ${media.md(`
-      display: inline;
-      padding-left: 50px;
-    `)}
+        display: inline;
+        padding-left: 50px;
+      `)}
     }
   }
 `;
@@ -111,10 +86,9 @@ export const SubHeading = styled(HeadingComponent)`
   color: ${({ theme }) => theme.color.opaque};
 
   ${media.md(`
-    display: block;
+    display: inline;
     padding-left: 75px; 
-    opacity: 0.6;
     font-size: 20px;
-    margin-bottom: 45px;
+    margin-bottom: 25px
   `)}
 `;

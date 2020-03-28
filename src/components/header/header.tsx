@@ -8,7 +8,8 @@ import {
   AnchorLink,
 } from './styles';
 
-export const Header = () => (
+//DONE CHECK
+export const Header: React.FC = () => (
   <HeaderComponent>
     <Nav>
       <IconLink to="/">zlob.</IconLink>
