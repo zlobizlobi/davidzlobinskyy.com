@@ -12,6 +12,8 @@ export const FooterComponent = styled.footer`
   padding: 20px 0;
   background-color: ${({ theme }) => theme.color.primary};
   border-top: 2px solid ${({ theme }) => theme.color.secondary};
+  position: absolute;
+  bottom: 0;
 `;
 
 const Text = styled(TextComponent)`

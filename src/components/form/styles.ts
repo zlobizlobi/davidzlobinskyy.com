@@ -61,4 +61,10 @@ export const BoldHighlight = styled.span`
 export const SubmitMessage = styled.span`
   color: ${({ theme }) => theme.color.secondary};
   align-self: center;
+  display: flex;
+  align-items: center;
+
+  > span {
+    font-size: 26px;
+  }
 `;

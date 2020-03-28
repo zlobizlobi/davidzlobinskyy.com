@@ -20,7 +20,7 @@ export const Layout: React.FC<{}> = ({ children }) => {
     <ThemeProvider theme={appTheme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyle />
       <Header />
-      <main style={{ marginTop: '50px' }}>{children}</main>
+      <main style={{ padding: '50px 0 100px 0' }}>{children}</main>
       <ThemeSwitch
         theme={appTheme}
         onClick={() => {

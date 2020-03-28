@@ -95,7 +95,20 @@ export const Form: React.FC = () => {
             </>
           )}
           {isSubmitted && (
-            <SubmitMessage>Your message is on its way to me</SubmitMessage>
+            <SubmitMessage>
+              Your message is on its way to me &nbsp;
+              <span role="img" aria-label="hands up">
+                🙌
+              </span>
+              &nbsp;
+              <span role="img" aria-label="alien monster">
+                👾
+              </span>
+              &nbsp;
+              <span role="img" aria-label="one hundred">
+                🎉
+              </span>
+            </SubmitMessage>
           )}
         </FormComponent>
       )}

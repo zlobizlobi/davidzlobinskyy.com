@@ -67,16 +67,17 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Jost', sans-serif;
         scroll-behavior: smooth;
         background-color: ${({ theme }) => theme.color.body};
+        transition: all 0.25s ease;
 
        * >  ::selection {
             background-color: ${({ theme }) => theme.color.secondary};
             color: ${({ theme }) => theme.color.primary};
         }
     }
- 
-    body, html {
+
+    html {
+        position: relative;
         min-height: 100%;
-        transition: all 0.25s ease;
     }
 
     button, textarea, input {
