@@ -24,6 +24,7 @@ module.exports = {
         pageStyles: path.join(__dirname, 'src/styles/pageStyles'),
         utils: path.join(__dirname, 'src/utils'),
         pages: path.join(__dirname, 'src/pages'),
+        images: path.join(__dirname, 'src/images'),
       },
     },
     {

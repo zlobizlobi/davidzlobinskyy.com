@@ -1,25 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
-import { SEO, Form, Layout } from '../components';
-import autoPhoto from '../images/autoPhoto.jpeg';
+import { SEO, Form, Layout } from 'components';
+import autoPhoto from 'images/autoPhotoBg.png';
+
 import {
   FormContainer,
   FormHeading,
   Image,
   HeadingContainer,
+  Container,
 } from 'pageStyles';
 import { FluidObject } from 'gatsby-image';
 import { graphql } from 'gatsby';
 import { FaEnvelopeOpen } from 'react-icons/fa';
-
-const Container = styled.section`
-  display: flex;
-  justify-content: center;
-  height: 100%;
-`;
-
-const SEO_DESCRIPTION =
-  'Contact or hire David Zlobinskyy. Submit a question, testimony or evaluation. ';
 
 interface IProps {
   data: {
@@ -31,23 +23,25 @@ interface IProps {
   };
 }
 
-const Contact: React.FC<IProps> = ({ data }) => {
-  return (
-    <Layout>
-      <SEO description={SEO_DESCRIPTION} title="Contact" image={autoPhoto} />
-      <Container>
-        <FormContainer>
-          <Image fluid={data.file.childImageSharp.fluid} />
-          <HeadingContainer>
-            <FormHeading>Write me a</FormHeading>
-            <FaEnvelopeOpen />
-          </HeadingContainer>
-          <Form />
-        </FormContainer>
-      </Container>
-    </Layout>
-  );
-};
+const Contact: React.FC<IProps> = ({ data }) => (
+  <Layout>
+    <SEO
+      description="Contact or hire David Zlobinskyy. Submit a question, testimony or evaluation."
+      title="Contact"
+      image={autoPhoto}
+    />
+    <Container>
+      <FormContainer>
+        <Image fluid={data.file.childImageSharp.fluid} />
+        <HeadingContainer>
+          <FormHeading>Write me a</FormHeading>
+          <FaEnvelopeOpen />
+        </HeadingContainer>
+        <Form />
+      </FormContainer>
+    </Container>
+  </Layout>
+);
 
 export const query = graphql`
   query Image {

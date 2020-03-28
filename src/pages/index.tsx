@@ -14,7 +14,7 @@ import {
   Heading,
   SubHeading,
 } from 'pageStyles';
-import autoPhoto from '../images/autoPhoto.jpeg';
+import autoPhoto from 'images/autoPhotoBg.png';
 
 interface IImage {
   childImageSharp: {

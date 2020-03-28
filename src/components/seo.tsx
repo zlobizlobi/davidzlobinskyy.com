@@ -31,6 +31,7 @@ export const SEO: React.FC<IProps> = ({
             title
             description
             author
+            siteUrl
           }
         }
       }
@@ -39,8 +40,11 @@ export const SEO: React.FC<IProps> = ({
 
   const metaDescription = description || '';
 
-  const metaImage = `${site.siteMetadata.siteUrl}${image.src}`;
+  const metaImage = `${site.siteMetadata.siteUrl}${image}`;
 
+  console.log(image);
+  console.log(site);
+  console.log(metaImage);
   return (
     <Helmet
       htmlAttributes={{

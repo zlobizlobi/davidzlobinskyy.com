@@ -1,7 +1,13 @@
-import styled, { DefaultTheme } from 'styled-components';
+import styled from 'styled-components';
 import { media } from 'styles';
 import { Heading as HeadingComponent } from 'components';
 import Img from 'gatsby-image';
+
+export const Container = styled.section`
+  display: flex;
+  justify-content: center;
+  height: 100%;
+`;
 
 export const FormContainer = styled.div`
   display: flex;

@@ -3,3 +3,4 @@ declare module 'styles';
 declare module 'utils';
 declare module 'pageStyles';
 declare module 'images';
+declare module '*.png';

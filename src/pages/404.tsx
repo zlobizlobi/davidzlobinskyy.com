@@ -1,11 +1,18 @@
 import React from 'react';
-import { Layout } from 'components';
+import { Heading } from 'components';
+import styled from 'styled-components';
+
+const PageContainer = styled.section`
+  width: 100%;
+  height: 100vh;
+`;
 
 const NotFoundPage: React.FC = () => (
-  <div>
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </div>
+  <PageContainer>
+    <Heading>
+      You just hit a route that doesn&#39;t exist... the sadness.
+    </Heading>
+  </PageContainer>
 );
 
 export default NotFoundPage;
