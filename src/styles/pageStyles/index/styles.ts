@@ -39,6 +39,8 @@ export const WorkCasesContainer = styled.span`
 
 export const Button = styled.button`
   display: none;
+  transition: all 0.2s ease;
+
   color: ${({ theme }) => theme.color.secondary};
   border: 2px solid ${({ theme }) => theme.color.secondary};
 

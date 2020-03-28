@@ -76,6 +76,7 @@ export const GlobalStyle = createGlobalStyle`
  
     body, html {
         min-height: 100%;
+        transition: all 0.25s ease;
     }
 
     button, textarea, input {
