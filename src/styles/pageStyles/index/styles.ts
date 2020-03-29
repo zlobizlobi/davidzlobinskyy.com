@@ -21,7 +21,7 @@ export const Section = styled.section`
 // DONE CHECK
 export const Greeting = styled(Text)`
   align-self: flex-start;
-  margin: 50px 0 40px 0;
+  margin-bottom: 40px;
   font-size: 24px;
 
   ${media.md(`

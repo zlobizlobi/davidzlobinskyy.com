@@ -18,10 +18,10 @@ export const Header: React.FC = () => (
           hello
           <span />
         </NavLink>
-        <AnchorLink to="#projects">
+        <NavLink to="#projects" title="projects">
           projects
           <span />
-        </AnchorLink>
+        </NavLink>
         <NavLink to="/contact">
           contact me
           <span />

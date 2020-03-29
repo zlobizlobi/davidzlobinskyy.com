@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { media } from 'styles';
 import { Heading as HeadingComponent } from 'components';
 import Img from 'gatsby-image';
-import { MdMailOutline } from 'react-icons/md';
+import { TiMail } from 'react-icons/ti';
 
 export const Container = styled.section`
   display: flex;
@@ -42,9 +42,9 @@ export const FormHeading = styled(HeadingComponent)`
   }
 `; // DONE CHECKING
 
-export const Icon = styled(MdMailOutline)`
+export const Icon = styled(TiMail)`
   margin-top: 20px;
-  font-size: 45px;
+  font-size: 70px;
   color: ${({ theme }) => theme.color.secondary};
 `;
 
@@ -58,7 +58,7 @@ export const Image = styled(Img).attrs({
   border-radius: 50%;
 
   ${media.md(`
-     width: 200px;
-     height: 200px;
+     width: 170px;
+     height: 170px;
   `)}
 `;

@@ -65,10 +65,9 @@ export const GlobalStyle = createGlobalStyle`
 
   html, body  {
         font-family: 'Jost', sans-serif;
-        scroll-behavior: smooth;
         background-color: ${({ theme }) => theme.color.body};
         transition: all 0.25s ease;
-
+        
        * >  ::selection {
             background-color: ${({ theme }) => theme.color.secondary};
             color: ${({ theme }) => theme.color.primary};
