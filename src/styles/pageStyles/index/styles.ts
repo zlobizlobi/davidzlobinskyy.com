@@ -15,7 +15,7 @@ export const Section = styled.section`
   }
 
   &:last-child {
-    padding: 100px 15px 100px 15px;
+    padding: 0 15px 200px 15px;
   }
 `;
 // DONE CHECK
