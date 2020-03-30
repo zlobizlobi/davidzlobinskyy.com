@@ -15,8 +15,14 @@ export const Section = styled.section`
   }
 
   &:last-child {
-    padding: 0 15px 200px 15px;
+    padding: 0 15px 30px 15px;
   }
+
+  ${media.md(`
+     &:last-child {
+      padding: 0 15px 130px 15px;
+    }
+  `)}
 `;
 // DONE CHECK
 export const Greeting = styled(Text)`
