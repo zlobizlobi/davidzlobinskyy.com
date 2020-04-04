@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Form, Field as FieldComponent } from 'formik';
+import { Flex } from '../flex';
 
 export const FormComponent = styled(Form)`
   display: flex;
@@ -7,14 +8,9 @@ export const FormComponent = styled(Form)`
   width: 100%;
 `;
 
-export const FieldContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+export const FieldContainer = styled(Flex)`
   margin-bottom: 25px;
-
-  &:nth-child(3) {
-    margin: 0;
-  }
+  flex-direction: column;
 `;
 
 export const Field = styled(FieldComponent)`
@@ -66,5 +62,6 @@ export const SubmitMessage = styled.span`
 
   > span {
     font-size: 26px;
+    margin-left: 10px;
   }
 `;

@@ -16,6 +16,17 @@ interface IProps {
   image: Image;
 }
 
+type UrlProps = {
+  site: {
+    siteMetadata: {
+      title: string;
+      description: string;
+      author: string;
+      siteUrl: string;
+    };
+  };
+};
+
 export const SEO: React.FC<IProps> = ({
   description,
   meta = [],
@@ -23,7 +34,7 @@ export const SEO: React.FC<IProps> = ({
   title,
   image,
 }) => {
-  const { site } = useStaticQuery(
+  const { site } = useStaticQuery<UrlProps>(
     graphql`
       query {
         site {

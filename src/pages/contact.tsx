@@ -21,7 +21,7 @@ interface IProps {
     };
   };
 }
-// DONE CHECKING
+
 const Contact: React.FC<IProps> = ({ data }) => (
   <Layout>
     <SEO

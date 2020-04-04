@@ -1,6 +1,6 @@
 import React, { useState, useLayoutEffect } from 'react';
 import { Header } from './header';
-import { Footer } from './footer';
+import { Footer } from './footer/footer';
 import { GlobalStyle, darkTheme, lightTheme } from 'styles';
 import { ThemeProvider } from 'styled-components';
 import { ThemeSwitch } from './themeSwitch';

@@ -10,8 +10,6 @@ import {
 import { IconContext } from 'react-icons';
 import { FaSpotify, FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa';
 
-//DONE CHECK
-
 export const Hero: React.FC = () => (
   <IconContext.Provider
     value={{

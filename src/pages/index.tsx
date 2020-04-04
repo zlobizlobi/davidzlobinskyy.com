@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { graphql } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
 import { animated } from 'react-spring';
@@ -28,13 +28,12 @@ interface IGraphQlImage {
 
 interface IProps {
   data: IGraphQlImage;
-  location: any;
 }
 
 const SEO_DESCRIPTION =
   'My name is David Zlobinskyy. I do Frontend Webdevelopment. Having 2 years of experience, I like designing web-applications & building them using React and Gatsby.';
 
-const IndexPage: React.FC<IProps> = ({ data, location }) => {
+const IndexPage: React.FC<IProps> = ({ data }) => {
   const projectSectionRef = useRef<HTMLElement>(null!);
 
   const [isFaded, setFaded] = useState<boolean>(false);
@@ -43,16 +42,7 @@ const IndexPage: React.FC<IProps> = ({ data, location }) => {
     (value: IImage) => value
   );
 
-  useEffect(() => {
-    console.log(location);
-    if (location.href.includes('#projects')) {
-      window.scrollTo({
-        top: projectSectionRef.current.offsetTop,
-      });
-    }
-  }, []);
-
-  const workCases = queryObjectWithoutKeys.map(
+  const workCases: React.ReactElement[] = queryObjectWithoutKeys.map(
     (image: IImage, index: number) => {
       const { href, workInformation } = getItemFromImage(
         image.childImageSharp.fluid.src
@@ -75,7 +65,7 @@ const IndexPage: React.FC<IProps> = ({ data, location }) => {
   const handleWaypointScroll = () => {
     setFaded(!isFaded);
   };
-  // DONE CHECK
+
   return (
     <Layout>
       <SEO title="Hello" description={SEO_DESCRIPTION} image={autoPhoto} />

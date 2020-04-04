@@ -15,7 +15,7 @@ export const Section = styled.section`
   }
 
   &:last-child {
-    padding: 0 15px 30px 15px;
+    padding: 40px 15px 30px 15px;
   }
 
   ${media.md(`
@@ -24,7 +24,7 @@ export const Section = styled.section`
     }
   `)}
 `;
-// DONE CHECK
+
 export const Greeting = styled(Text)`
   align-self: flex-start;
   margin-bottom: 40px;

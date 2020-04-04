@@ -40,7 +40,7 @@ export const FormHeading = styled(HeadingComponent)`
     font-size: 30px;
     font-weight: 300;
   }
-`; // DONE CHECKING
+`;
 
 export const Icon = styled(TiMail)`
   margin-top: 20px;

@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Nav,
-  NavLink,
-  NavList,
-  HeaderComponent,
-  IconLink,
-  AnchorLink,
-} from './styles';
+import { Nav, NavLink, NavList, HeaderComponent, IconLink } from './styles';
 
 //DONE CHECK
 export const Header: React.FC = () => (
@@ -18,7 +11,7 @@ export const Header: React.FC = () => (
           hello
           <span />
         </NavLink>
-        <NavLink to="#projects" title="projects">
+        <NavLink to="#projects">
           projects
           <span />
         </NavLink>

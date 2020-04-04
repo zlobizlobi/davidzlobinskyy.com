@@ -1,1 +1,1 @@
-export { getItemFromImage } from './helpers';
+export { getItemFromImage } from './getItemFromImage';
