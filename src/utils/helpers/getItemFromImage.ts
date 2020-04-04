@@ -35,7 +35,7 @@ export const getItemFromImage = (src: string): IItem => {
       };
     case 'young-socials.png':
       return {
-        href: 'https://young-socials.nl',
+        href: 'https://stupefied-booth-657dff.netlify.com',
         workInformation: 'Small Web Project for "Young Socials | Video Agency"',
       };
     case 'enable.png':
