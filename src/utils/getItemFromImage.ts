@@ -31,7 +31,7 @@ export const getItemFromImage = (src: string): IItem => {
       return {
         href: 'https://tatjananeufeld.com',
         workInformation:
-          'Gatsby Portofolio Project for Concert Pianist Tatjana Neufeld',
+          'Portofolio Project for Concert Pianist Tatjana Neufeld build with Gatsby and Prismic',
       };
     case 'young-socials.png':
       return {
