@@ -68,7 +68,7 @@ const IndexPage: React.FC<IProps> = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Hello" description={SEO_DESCRIPTION} image={autoPhoto} />
+      <SEO title="Home" description={SEO_DESCRIPTION} image={autoPhoto} />
       <Section id="home">
         <Greeting>
           Hi friend{' '}
