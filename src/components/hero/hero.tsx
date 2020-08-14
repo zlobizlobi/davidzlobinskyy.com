@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconContext } from 'react-icons';
 import { FaSpotify, FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa';
-import { Text } from 'components'
+import { Text } from 'components';
 import styled from 'styled-components';
 import { media } from 'styles';
 
@@ -16,77 +16,36 @@ export const Hero: React.FC = () => (
       <Greeting>
         Hi friend{' '}
         <span role="img" aria-label="hand">
-          👋
-        </span>,
+          👋,
+        </span>
       </Greeting>
       <Name>my name is David Zlobinskyy,</Name>
       <Name>some call me zlob,</Name>
       <Developer>I do Frontend Webdevelopment</Developer>
       <Biography>
-        I like designing &
-        building web-applications since some time already. For this I use different kind of tools that cross my path like {' '}
-        <Highlight
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          React
-        </Highlight>,{' '}
-        <Highlight
-          href="https://gatsbyjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Gatsby
-        </Highlight>, {' '}
-        <Highlight
-          href="https://gatsbyjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Typescript
-        </Highlight>,{' '}
-        <Highlight
-          href="https://gatsbyjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          AdobeXD
-        </Highlight>
-        {' '}
-        and more.
+        I like designing & building web-applications since some time already.
+        For this I use different kind of tools that cross my path like{' '}
+        <Highlight href="https://reactjs.org">React</Highlight>,{' '}
+        <Highlight href="https://gatsbyjs.org">Gatsby</Highlight>,{' '}
+        <Highlight href="https://gatsbyjs.org">Typescript</Highlight>,{' '}
+        <Highlight href="https://gatsbyjs.org">AdobeXD</Highlight> and more.
       </Biography>
       <Biography>
-        Besides busying myself with software development - I love to travel, rediscover myself and write raps.
-        Someone once said to me: "The meaning of life is to give life meaning".
+        Besides busying myself with software development - I love to travel,
+        rediscover myself and write raps. Someone once said to me: &apos;The
+        meaning of life is to give life meaning&apos;.
       </Biography>
       <IconContainer>
-        <a
-          href="https://linkedin.com/in/david-zlobinskyy"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="https://linkedin.com/in/david-zlobinskyy">
           <FaLinkedin />
         </a>
-        <a
-          href="https://github.com/zlobizlobi"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="https://github.com/zlobizlobi">
           <FaGithub />
         </a>
-        <a
-          href="https://instagram.com/zlobbbi"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="https://instagram.com/zlobbbi">
           <FaInstagram />
         </a>
-        <a
-          href="https://open.spotify.com/user/hhh0nkzioltxef8v13g903hhk?si=Zldgm6fiQs2_ipJhd14tVA"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="https://open.spotify.com/user/hhh0nkzioltxef8v13g903hhk?si=Zldgm6fiQs2_ipJhd14tVA">
           <FaSpotify />
         </a>
       </IconContainer>
@@ -94,12 +53,11 @@ export const Hero: React.FC = () => (
   </IconContext.Provider>
 );
 
-
 const Greeting = styled(Text)`
-margin-bottom: 40px;
-font-size: 24px;
+  margin-bottom: 40px;
+  font-size: 24px;
 
-${media.md(`
+  ${media.md(`
     font-size: 30px;
 `)}
 `;
@@ -140,7 +98,10 @@ export const Biography = styled(Text)`
   }
 `;
 
-export const Highlight = styled.a`
+export const Highlight = styled.a.attrs({
+  target: '_blank',
+  rel: 'noopener noreferrer',
+})`
   padding-bottom: 1px;
   border-bottom: 2px solid black;
   transition: color 0.2s ease;

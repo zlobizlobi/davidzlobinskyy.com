@@ -21,7 +21,6 @@ interface IProps {
 }
 
 const IndexPage: React.FC<IProps> = ({ data }) => {
-
   return (
     <>
       <SEO title="Home" />
@@ -80,35 +79,34 @@ const Section = styled.section`
   `)};
 `;
 
-const WorkCasesContainer = styled.span`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-`;
+// const WorkCasesContainer = styled.span`
+//   display: flex;
+//   justify-content: center;
+//   flex-wrap: wrap;
+// `;
 
+// const Heading = styled(HeadingComponent)`
+//   && {
+//     margin-bottom: 20px;
 
-const Heading = styled(HeadingComponent)`
-  && {
-    margin-bottom: 20px;
+//     &:nth-child(1) {
+//       display: block;
 
-    &:nth-child(1) {
-      display: block;
+//       ${media.md(`
+//         display: none;
+//       `)}
+//     }
 
-      ${media.md(`
-        display: none;
-      `)}
-    }
+//     &:nth-child(2) {
+//       display: none;
 
-    &:nth-child(2) {
-      display: none;
-
-      ${media.md(`
-        display: inline;
-        padding-left: 50px;
-      `)}
-    }
-  }
-`;
+//       ${media.md(`
+//         display: inline;
+//         padding-left: 50px;
+//       `)}
+//     }
+//   }
+// `;
 
 export const SubHeading = styled(HeadingComponent)`
   display: none;

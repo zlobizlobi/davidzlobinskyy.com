@@ -12,7 +12,6 @@ interface SeoProps {
   description: string;
   meta?: Array<{ name: string; content: string }>;
   title: string;
-  keywords?: string[];
   image: Image;
 }
 
@@ -30,7 +29,6 @@ type UrlProps = {
 export const SEO: React.FC<SeoProps> = ({
   description,
   meta = [],
-  keywords = [],
   title,
   image,
 }) => {
@@ -48,9 +46,9 @@ export const SEO: React.FC<SeoProps> = ({
     `
   );
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || site.siteMetadata.description;
 
-  const metaImage = `${site.siteMetadata.siteUrl}${autoPhoto}`;
+  const metaImage = `${site.siteMetadata.siteUrl}${image || autoPhoto}`;
 
   return (
     <Helmet
@@ -70,7 +68,7 @@ export const SEO: React.FC<SeoProps> = ({
         },
         {
           property: `og:title`,
-          content: `${title} | ${site.siteMetadata.title}`
+          content: `${title} | ${site.siteMetadata.title}`,
         },
         {
           property: `og:description`,
@@ -116,16 +114,7 @@ export const SEO: React.FC<SeoProps> = ({
           name: `twitter:card`,
           content: `summary_large_image`,
         },
-      ]
-        .concat(meta.length ? meta : [])
-        .concat(
-          keywords.length
-            ? {
-              name: `keywords`,
-              content: keywords.join(`, `),
-            }
-            : []
-        )}
+      ].concat(meta.length ? meta : [])}
     />
   );
 };

@@ -5,7 +5,7 @@ import { GlobalStyle, darkTheme, lightTheme } from 'styles';
 import { ThemeProvider } from 'styled-components';
 import { ThemeSwitch } from './themeSwitch';
 
-export const Layout: FC<{}> = ({ children }) => {
+export const Layout: FC = ({ children }) => {
   const [appTheme, setAppTheme] = useState('dark');
 
   useLayoutEffect(() => {
@@ -20,7 +20,16 @@ export const Layout: FC<{}> = ({ children }) => {
     <ThemeProvider theme={appTheme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyle />
       <Header />
-      <main style={{ padding: '50px 0 65px 0', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>{children}</main>
+      <main
+        style={{
+          padding: '50px 0 65px 0',
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        {children}
+      </main>
       <ThemeSwitch
         theme={appTheme}
         onClick={() => {
@@ -30,6 +39,6 @@ export const Layout: FC<{}> = ({ children }) => {
         }}
       />
       <Footer appTheme={appTheme} />
-    </ThemeProvider >
+    </ThemeProvider>
   );
 };

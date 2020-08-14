@@ -26,7 +26,9 @@ const Contact: React.FC<IProps> = ({ data }) => (
       <FormContainer>
         <Image fluid={data.file.childImageSharp.fluid} />
         <CTAContainer>
-          <FormHeading>Like my work? Or just want to strike up a conversation? Write me! </FormHeading>
+          <FormHeading>
+            Like my work? Or just want to strike up a conversation? Write me!
+          </FormHeading>
         </CTAContainer>
         <Form />
       </FormContainer>
@@ -55,7 +57,6 @@ const Container = styled.section`
   max-width: 700px;
   padding: 50px 15px;
   width: 100%;
-  
   ${media.md(`
     padding: 50px 0;
   `)};
@@ -88,7 +89,6 @@ export const Image = styled(Img)`
   height: 150px;
   align-self: flex-end;
   border-radius: 50%;
-  
   ${media.md(`
      width: 170px;
      height: 170px;

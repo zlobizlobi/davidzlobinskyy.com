@@ -25,8 +25,6 @@ export const Section = styled.section`
   `)}
 `;
 
-
-
 export const WorkCasesContainer = styled.span`
   display: flex;
   justify-content: center;

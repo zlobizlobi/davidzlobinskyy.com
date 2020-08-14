@@ -49,7 +49,7 @@ export const Icon = styled(TiMail)`
 `;
 
 export const Image = styled(Img)`
-   width: 150px;
+  width: 150px;
   height: 150px;
   border-radius: 50%;
 
