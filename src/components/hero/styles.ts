@@ -2,11 +2,10 @@ import styled from 'styled-components';
 import { Text } from '../text';
 import { media } from 'styles';
 
-// CHECK DONE
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 export const Name = styled(Text)`

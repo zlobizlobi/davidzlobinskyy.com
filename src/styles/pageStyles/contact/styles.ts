@@ -48,12 +48,8 @@ export const Icon = styled(TiMail)`
   color: ${({ theme }) => theme.color.secondary};
 `;
 
-export const Image = styled(Img).attrs({
-  imgStyle: {
-    objectFit: 'contain',
-  },
-})`
-  width: 150px;
+export const Image = styled(Img)`
+   width: 150px;
   height: 150px;
   border-radius: 50%;
 

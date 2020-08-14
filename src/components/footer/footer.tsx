@@ -6,16 +6,11 @@ interface IProps {
   appTheme: string;
 }
 
-export const Footer: React.FC<IProps> = ({ appTheme }) => (
+export const Footer: React.FC<IProps> = () => (
   <Container>
     <Text>
-      Made with&nbsp;
-      <span role="img" aria-label={appTheme ? 'Red heart' : 'White heart'}>
-        ❤️&nbsp;
-      </span>
-      in&nbsp;
-      <img src={amsterdamIcon} style={{ width: '25px', height: '25px' }} />
+      Made in&nbsp;<img src={amsterdamIcon} style={{ width: '20px', height: '20px' }} />
     </Text>
-    <Text>© 2020 David Zlobinskyy.</Text>
+    <Text>© 2020 davidzlobinskyy.com</Text>
   </Container>
 );

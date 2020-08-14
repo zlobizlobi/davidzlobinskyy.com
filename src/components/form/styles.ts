@@ -42,12 +42,17 @@ export const Required = styled.span`
 `;
 
 export const Button = styled.button.attrs({ type: 'submit' })`
-  padding: 10px 0;
-  background-color: ${({ theme }) => theme.color.secondary};
-  color: ${({ theme }) => theme.color.primary};
+  padding: 10px 20px;
+  background-color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.secondary};
   transition: all 0.2s ease;
   cursor: pointer;
-  border: none;
+  border: 2px solid ${({ theme }) => theme.color.secondary};
+  align-self: flex-end;
+  :hover {
+    background-color: ${({ theme }) => theme.color.secondary};
+    color: ${({ theme }) => theme.color.primary};
+  }
 `;
 
 export const BoldHighlight = styled.span`
@@ -59,9 +64,11 @@ export const SubmitMessage = styled.span`
   align-self: center;
   display: flex;
   align-items: center;
+  font-size: 25px;
+  font-weight: 400;
 
   > span {
-    font-size: 26px;
+    font-size: 30px;
     margin-left: 10px;
   }
 `;

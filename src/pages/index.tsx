@@ -1,20 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
-import { animated } from 'react-spring';
-import { Trail } from 'react-spring/renderprops';
-import { Layout, Hero, WorkCase, SEO } from 'components';
-import { getItemFromImage } from 'utils';
-import { Waypoint } from 'react-waypoint';
-import {
-  Section,
-  Button,
-  Greeting,
-  WorkCasesContainer,
-  Heading,
-  SubHeading,
-} from 'pageStyles';
-import autoPhoto from 'images/autoMe.png';
+import { Hero, SEO } from 'components';
+import styled from 'styled-components';
+import { media } from 'styles';
+import { Heading as HeadingComponent } from 'components';
 
 interface IImage {
   childImageSharp: {
@@ -30,97 +20,16 @@ interface IProps {
   data: IGraphQlImage;
 }
 
-const SEO_DESCRIPTION =
-  'My name is David Zlobinskyy. I do Frontend Webdevelopment. Having 2 years of experience, I like designing web-applications & building them using React and Gatsby.';
-
 const IndexPage: React.FC<IProps> = ({ data }) => {
-  const projectSectionRef = useRef<HTMLElement>(null!);
-
-  const [isFaded, setFaded] = useState<boolean>(false);
-
-  const queryObjectWithoutKeys = Object.values(data).map(
-    (value: IImage) => value
-  );
-
-  const workCases: React.ReactElement[] = queryObjectWithoutKeys.map(
-    (image: IImage, index: number) => {
-      const { href, workInformation } = getItemFromImage(
-        image.childImageSharp.fluid.src
-      );
-
-      return (
-        <WorkCase
-          href={href}
-          key={index}
-          target="_blank"
-          rel="noopener noreferrer"
-          alt={workInformation}
-          imgSrc={image.childImageSharp.fluid}
-          workInformation={workInformation}
-        />
-      );
-    }
-  );
-
-  const handleWaypointScroll = () => {
-    setFaded(!isFaded);
-  };
 
   return (
-    <Layout>
-      <SEO title="Home" description={SEO_DESCRIPTION} image={autoPhoto} />
+    <>
+      <SEO title="Home" />
       <Section id="home">
-        <Greeting>
-          Hi friend{' '}
-          <span role="img" aria-label="hand">
-            👋
-          </span>
-          ,
-        </Greeting>
         <Hero />
-        <Button
-          onClick={() => {
-            window.scrollTo({
-              behavior: 'smooth',
-              top: projectSectionRef.current.offsetTop,
-            });
-          }}
-        >
-          See my work
-        </Button>
+        <Hero />
       </Section>
-      <Waypoint onEnter={handleWaypointScroll} onLeave={handleWaypointScroll}>
-        <Section id="projects" ref={projectSectionRef}>
-          <Heading>Projects</Heading>
-          <Heading>See my work</Heading>
-          <SubHeading>
-            hover or click on the cards for more information about a project
-          </SubHeading>
-          <WorkCasesContainer>
-            <Trail
-              config={{
-                mass: 1,
-                friction: 30,
-                tension: 400,
-                delay: isFaded ? 500 : 0,
-              }}
-              items={workCases}
-              keys={({ props: { href } }) => href}
-              to={{
-                opacity: isFaded ? 1 : 0,
-                transform: isFaded ? 'translateY(0%)' : 'translateY(50%)',
-              }}
-            >
-              {item => props => (
-                <animated.span style={{ ...props, margin: '15px' }}>
-                  {item}
-                </animated.span>
-              )}
-            </Trail>
-          </WorkCasesContainer>
-        </Section>
-      </Waypoint>
-    </Layout>
+    </>
   );
 };
 
@@ -158,6 +67,61 @@ export const query = graphql`
       ...image
     }
   }
+`;
+
+const Section = styled.section`
+  padding: 0 15px 0 15px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 50px 15px;
+
+  ${media.md(`
+    padding: 50px 0;
+  `)};
+`;
+
+const WorkCasesContainer = styled.span`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
+
+
+const Heading = styled(HeadingComponent)`
+  && {
+    margin-bottom: 20px;
+
+    &:nth-child(1) {
+      display: block;
+
+      ${media.md(`
+        display: none;
+      `)}
+    }
+
+    &:nth-child(2) {
+      display: none;
+
+      ${media.md(`
+        display: inline;
+        padding-left: 50px;
+      `)}
+    }
+  }
+`;
+
+export const SubHeading = styled(HeadingComponent)`
+  display: none;
+  color: ${({ theme }) => theme.color.opaque};
+
+  ${media.md(`
+    display: inline;
+    padding-left: 75px; 
+    font-size: 20px;
+    margin-bottom: 25px
+  `)}
 `;
 
 export default IndexPage;

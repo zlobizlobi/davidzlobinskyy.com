@@ -1,17 +1,22 @@
 import styled from 'styled-components';
 import { Text as TextComponent } from '../text';
+import { media } from '../../styles';
 
 export const Container = styled.footer`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   width: 100%;
-  padding: 20px 0;
-  background-color: ${({ theme }) => theme.color.primary};
-  border-top: 2px solid ${({ theme }) => theme.color.secondary};
-  position: absolute;
+  background-color: ${({ theme }) => theme.color.secondary};
+  border-top: 2px solid ${({ theme }) => theme.color.primary};
+  position: fixed;
   bottom: 0;
+  height: 65px;
+
+  ${media.md(`
+      flex-direction: row;
+  `)}
 `;
 
 export const Text = styled(TextComponent)`
@@ -19,8 +24,11 @@ export const Text = styled(TextComponent)`
   align-items: center;
   text-align: center;
   font-size: 14px;
+  color: ${({ theme }) => theme.color.primary};
 
-  &:first-child {
-    margin-bottom: 10px;
-  }
+  ${media.md(`
+    &:first-child {
+      margin-right: 10px;
+    }
+  `)}
 `;

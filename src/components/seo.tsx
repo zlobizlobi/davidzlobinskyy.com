@@ -1,14 +1,14 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
-
+import autoPhoto from '../images/autoMe.png';
 interface Image {
   width: string;
   height: string;
   src: string;
 }
 
-interface IProps {
+interface SeoProps {
   description: string;
   meta?: Array<{ name: string; content: string }>;
   title: string;
@@ -27,7 +27,7 @@ type UrlProps = {
   };
 };
 
-export const SEO: React.FC<IProps> = ({
+export const SEO: React.FC<SeoProps> = ({
   description,
   meta = [],
   keywords = [],
@@ -42,16 +42,15 @@ export const SEO: React.FC<IProps> = ({
             title
             description
             author
-            siteUrl
           }
         }
       }
     `
   );
 
-  const metaDescription = description || '';
+  const metaDescription = description || site.siteMetadata.description
 
-  const metaImage = `${site.siteMetadata.siteUrl}${image}`;
+  const metaImage = `${site.siteMetadata.siteUrl}${autoPhoto}`;
 
   return (
     <Helmet
@@ -59,16 +58,8 @@ export const SEO: React.FC<IProps> = ({
         lang: 'en',
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`${title} | ${site.siteMetadata.title}`}
       meta={[
-        {
-          name: `mobile-web-app-capable`,
-          content: 'yes',
-        },
-        {
-          name: `apple-mobile-web-app-capable`,
-          content: `yes`,
-        },
         {
           meta: `theme-color`,
           content: `#fff`,
@@ -79,7 +70,7 @@ export const SEO: React.FC<IProps> = ({
         },
         {
           property: `og:title`,
-          content: title,
+          content: `${title} | ${site.siteMetadata.title}`
         },
         {
           property: `og:description`,
@@ -115,11 +106,11 @@ export const SEO: React.FC<IProps> = ({
         },
         {
           property: 'og:image:width',
-          content: image.width,
+          content: autoPhoto.width,
         },
         {
           property: 'og:image:height',
-          content: image.height,
+          content: autoPhoto.height,
         },
         {
           name: `twitter:card`,
@@ -130,9 +121,9 @@ export const SEO: React.FC<IProps> = ({
         .concat(
           keywords.length
             ? {
-                name: `keywords`,
-                content: keywords.join(`, `),
-              }
+              name: `keywords`,
+              content: keywords.join(`, `),
+            }
             : []
         )}
     />

@@ -2,8 +2,8 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    title: `David Zlobinskyy`,
-    description: `Hi there, I am David Zlobinskyy - a spirited web developer. This is my personal website.`,
+    title: `David Zlobinskyy - Frontend Developer`,
+    description: `My name is David Zlobinskyy. I do Frontend Webdevelopment. Having 2 years of experience, I like designing web-applications & building them using React and Gatsby.`,
     author: `@zlobizlobi`,
     siteUrl: `https://davidzlobinskyy.com`,
   },

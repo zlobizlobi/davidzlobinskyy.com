@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { media } from 'styles';
-import { Text, Heading as HeadingComponent } from 'components';
+import { Heading as HeadingComponent } from 'components';
 
 export const Section = styled.section`
   padding: 0 15px 0 15px;
@@ -25,16 +25,7 @@ export const Section = styled.section`
   `)}
 `;
 
-export const Greeting = styled(Text)`
-  align-self: flex-start;
-  margin-bottom: 40px;
-  font-size: 24px;
 
-  ${media.md(`
-      font-size: 30px;
-      padding-left: 100px;
-  `)}
-`;
 
 export const WorkCasesContainer = styled.span`
   display: flex;

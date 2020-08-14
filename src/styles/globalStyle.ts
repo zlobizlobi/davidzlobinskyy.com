@@ -63,6 +63,10 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  body {
+    min-height: calc(100vh);
+  }
+  
   html, body  {
         font-family: 'Jost', sans-serif;
         background-color: ${({ theme }) => theme.color.body};

@@ -8,7 +8,7 @@ export const HeaderComponent = styled.header`
   left: 0;
   z-index: 2;
   width: 100%;
-  background-color: ${({ theme }) => theme.color.primary};
+  background-color: ${({ theme }) => theme.color.secondary};
 `;
 
 export const Nav = styled.nav`
@@ -29,11 +29,11 @@ export const IconLink = styled(Link)`
   font-size: 14px;
   padding: 15px;
   text-decoration: none;
-  color: ${({ theme }) => theme.color.secondary};
+  color: ${({ theme }) => theme.color.primary};
 `;
 
 const navLinkCss = css`
-  color: ${({ theme }) => theme.color.secondary};
+  color: ${({ theme }) => theme.color.primary};
   text-decoration: none;
   font-weight: 500;
   font-size: 14px;
