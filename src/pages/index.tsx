@@ -27,7 +27,6 @@ const IndexPage: React.FC<IProps> = ({ data }) => {
       <SEO title="Home" />
       <Section id="home">
         <Hero />
-        <Hero />
       </Section>
     </>
   );
@@ -70,7 +69,6 @@ export const query = graphql`
 `;
 
 const Section = styled.section`
-  padding: 0 15px 0 15px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
