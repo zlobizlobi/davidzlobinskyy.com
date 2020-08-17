@@ -8,5 +8,5 @@ interface IProps {
 }
 
 export const ThemeSwitch: React.FC<IProps> = ({ theme, onClick }) => (
-  <Button onClick={onClick}>{theme ? <FiSun /> : <FiMoon />}</Button>
+  <Button onClick={onClick}>{theme === 'dark' ? <FiSun /> : <FiMoon />}</Button>
 );

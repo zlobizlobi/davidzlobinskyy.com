@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
+import styled from 'styled-components';
 import { IconContext } from 'react-icons';
 import { FaSpotify, FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa';
 import { Text } from 'components';
-import styled from 'styled-components';
 import { media } from 'styles';
 
-export const Hero: React.FC = () => (
+export const Hero: FC = () => (
   <IconContext.Provider
     value={{
       color: 'rgb(211,211,211)',
@@ -20,7 +20,7 @@ export const Hero: React.FC = () => (
         </span>
       </Greeting>
       <Name>my name is David Zlobinskyy,</Name>
-      <Name>some call me zlob,</Name>
+      <Name>some call me <Highlight as="span">zlob</Highlight>,</Name>
       <Developer>I do Frontend Webdevelopment</Developer>
       <Biography>
         I like designing & building web-applications since some time already.
@@ -53,52 +53,7 @@ export const Hero: React.FC = () => (
   </IconContext.Provider>
 );
 
-const Greeting = styled(Text)`
-  margin-bottom: 40px;
-  font-size: 24px;
-
-  ${media.md(`
-    font-size: 30px;
-`)}
-`;
-
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
-export const Name = styled(Text)`
-  font-size: 19px;
-
-  &:nth-child(2) {
-    margin-top: 10px;
-  }
-
-  ${media.md(`
-      font-size: 22px;
-  `)}
-`;
-
-export const Developer = styled(Text)`
-  font-size: 24px;
-  margin: 30px 0;
-
-  ${media.md(`
-      font-size: 30px;
-  `)}
-`;
-
-export const Biography = styled(Text)`
-  font-size: 16px;
-  margin-bottom: 30px;
-
-  &:last-of-type {
-    font-style: italic;
-  }
-`;
-
-export const Highlight = styled.a.attrs({
+const Highlight = styled.a.attrs({
   target: '_blank',
   rel: 'noopener noreferrer',
 })`
@@ -114,7 +69,60 @@ export const Highlight = styled.a.attrs({
   }
 `;
 
-export const IconContainer = styled.div`
+const Greeting = styled(Text)`
+  margin-bottom: 40px;
+  font-size: 24px;
+
+  ${media.md(`
+    font-size: 30px;
+`)}
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+const Name = styled(Text)`
+  font-size: 19px;
+
+  
+  &:nth-child(2) {
+    margin-top: 10px;
+  }
+
+   > ${Highlight}{
+    && {
+      color: black;
+      padding: 0;
+    }
+  }
+
+  ${media.md(`
+      font-size: 22px;
+  `)}
+`;
+
+const Developer = styled(Text)`
+  font-size: 24px;
+  margin: 30px 0;
+
+  ${media.md(`
+      font-size: 30px;
+  `)}
+`;
+
+const Biography = styled(Text)`
+  font-size: 16px;
+  margin-bottom: 30px;
+
+  &:last-of-type {
+    font-style: italic;
+  }
+`;
+
+const IconContainer = styled.div`
   display: flex;
   margin-top: 45px;
 

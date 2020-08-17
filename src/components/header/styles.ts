@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
 import { AnchorLink as AnchorLinkComponent } from 'gatsby-plugin-anchor-links';
+import { media } from 'styles';
 
 export const HeaderComponent = styled.header`
   position: fixed;
@@ -41,14 +42,25 @@ const navLinkCss = css`
   opacity: 0.3;
   transition: opacity 0.2s ease;
   position: relative;
+
+  &:last-child {
+    padding-right: 60px;
+  }
+
+  ${media.xl(`
+    &:last-child {
+      padding: 15px;
+    }
+  `)}
 `;
 
 export const NavLink = styled(Link).attrs({
   activeStyle: {
     opacity: 1,
+    textDecoration: 'underline'
   },
 })`
-  ${navLinkCss}
+  ${navLinkCss} 
 `;
 
 export const AnchorLink = styled(AnchorLinkComponent)`

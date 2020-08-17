@@ -7,7 +7,7 @@ export const Header: React.FC = () => (
       <IconLink to="/">zlob.</IconLink>
       <NavList>
         <NavLink to="/">
-          hello
+          hi
           <span />
         </NavLink>
         <NavLink to="/projects">
@@ -15,7 +15,7 @@ export const Header: React.FC = () => (
           <span />
         </NavLink>
         <NavLink to="/contact">
-          contact me
+          contact
           <span />
         </NavLink>
       </NavList>
