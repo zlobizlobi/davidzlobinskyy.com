@@ -22,6 +22,7 @@ export const Overlay = styled.span`
 export const Text = styled(TextComponent)`
   color: ${({ theme }) => theme.color.primary};
   font-size: 14px;
+  font-weight: 500;
 `;
 
 export const Container = styled.span`
@@ -31,10 +32,11 @@ export const Container = styled.span`
   padding: 25px 30px;
   transition: opacity 0.2s ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 5px;
 
   :hover {
     ${Overlay} {
-      opacity: 0.8;
+      opacity: 0.9;
     }
   }
 `;
@@ -44,6 +46,6 @@ export const Img = styled(ImgComponent).attrs({
     objectFit: 'contain',
   },
 })`
-  width: 200px;
-  height: 90px;
+  width: 120px;
+  height: 120px;
 `;

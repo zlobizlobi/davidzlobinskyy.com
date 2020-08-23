@@ -39,7 +39,7 @@ const navLinkCss = css`
   font-weight: 500;
   font-size: 14px;
   padding: 15px;
-  opacity: 0.3;
+  opacity: 0.7;
   transition: opacity 0.2s ease;
   position: relative;
 

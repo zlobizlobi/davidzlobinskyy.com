@@ -21,7 +21,7 @@ export const Hero: FC = () => (
       </Greeting>
       <Name>my name is David Zlobinskyy,</Name>
       <Name>
-        some call me <Highlight as="span">zlob</Highlight>,
+        some call me zlob,
       </Name>
       <Developer>I do Frontend Webdevelopment</Developer>
       <Biography>
@@ -74,7 +74,8 @@ const Highlight = styled.a.attrs({
 const Greeting = styled(Text)`
   margin-bottom: 40px;
   font-size: 24px;
-
+  font-weight: 500;
+  
   ${media.md(`
     font-size: 30px;
 `)}
@@ -108,6 +109,7 @@ const Name = styled(Text)`
 const Developer = styled(Text)`
   font-size: 24px;
   margin: 30px 0;
+  font-weight: 500;
 
   ${media.md(`
       font-size: 30px;

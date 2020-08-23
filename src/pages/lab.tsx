@@ -1,6 +1,6 @@
 import React, { useState, FC, useEffect } from 'react';
 import styled from 'styled-components';
-import { Heading as HeadingComponent, WorkCase, SEO } from 'components';
+import { Heading as HeadingComponent, WorkCase, SEO, Text } from 'components';
 import { media } from 'styles';
 import { Trail } from 'react-spring/renderprops';
 import { animated } from 'react-spring';
@@ -22,7 +22,7 @@ interface ProjectsProps {
   data: IGraphQlImage;
 }
 
-const Projects: FC<ProjectsProps> = ({ data }) => {
+const Lab: FC<ProjectsProps> = ({ data }) => {
   const [isFaded, setFaded] = useState<boolean>(false);
 
   const queryObjectWithoutKeys = Object.values(data).map(
@@ -62,7 +62,7 @@ const Projects: FC<ProjectsProps> = ({ data }) => {
       <Section>
         <Heading>Projects</Heading>
         <SubHeading>
-          hover or click on the cards for more information about a project
+          hover or click on the cards for more information about one of my projects
         </SubHeading>
         <WorkCasesContainer>
           <Trail
@@ -90,34 +90,6 @@ const Projects: FC<ProjectsProps> = ({ data }) => {
     </>
   );
 };
-
-const StyledAnimatedContainer = styled(animated.span)`
-  margin: 0 0 15px 0;
-
-  width: 100%;
-
-  ${media.md(`
-        width: unset;
-        margin: 15px;
-    `)}
-`;
-const Section = styled.section`
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  max-width: 1300px;
-  padding: 25px 15px;
-
-  ${media.md(`
-    padding: 50px 0px;
-  `)}
-`;
-
-const WorkCasesContainer = styled.span`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-`;
 
 export const image = graphql`
   fragment image on File {
@@ -178,16 +150,44 @@ const Heading = styled(HeadingComponent)`
   }
 `;
 
-export const SubHeading = styled(HeadingComponent)`
+export const SubHeading = styled(Text)`
   display: none;
   color: ${({ theme }) => theme.color.opaque};
 
   ${media.md(`
     display: inline;
-    padding-left: 75px; 
     font-size: 20px;
-    margin-bottom: 25px
+    margin: 0 0 20px 20px;
+    align-self: flex-start;
   `)}
 `;
 
-export default Projects;
+const StyledAnimatedContainer = styled(animated.span)`
+  margin: 0 0 15px 0;
+
+  width: 100%;
+
+  ${media.md(`
+        width: unset;
+        margin: 15px;
+    `)}
+`;
+const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 865px;
+  padding: 25px 15px;
+  
+  ${media.md(`
+    padding: 50px 0px;
+  `)}
+`;
+
+const WorkCasesContainer = styled.span`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
+
+export default Lab;

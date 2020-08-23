@@ -10,8 +10,8 @@ export const Header: React.FC = () => (
           hi
           <span />
         </NavLink>
-        <NavLink to="/projects">
-          projects
+        <NavLink to="/lab">
+          lab
           <span />
         </NavLink>
         <NavLink to="/contact">
