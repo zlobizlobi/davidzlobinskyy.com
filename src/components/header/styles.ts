@@ -57,10 +57,10 @@ const navLinkCss = css`
 export const NavLink = styled(Link).attrs({
   activeStyle: {
     opacity: 1,
-    textDecoration: 'underline'
+    textDecoration: 'underline',
   },
 })`
-  ${navLinkCss} 
+  ${navLinkCss}
 `;
 
 export const AnchorLink = styled(AnchorLinkComponent)`

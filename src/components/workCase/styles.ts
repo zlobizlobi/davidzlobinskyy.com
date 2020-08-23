@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { Text as TextComponent } from '../text';
 import ImgComponent from 'gatsby-image';
-
-// CHECK DONE
+import { media } from 'styles';
 
 export const Overlay = styled.span`
   position: absolute;

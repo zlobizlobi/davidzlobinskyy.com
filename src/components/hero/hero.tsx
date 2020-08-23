@@ -20,7 +20,9 @@ export const Hero: FC = () => (
         </span>
       </Greeting>
       <Name>my name is David Zlobinskyy,</Name>
-      <Name>some call me <Highlight as="span">zlob</Highlight>,</Name>
+      <Name>
+        some call me <Highlight as="span">zlob</Highlight>,
+      </Name>
       <Developer>I do Frontend Webdevelopment</Developer>
       <Biography>
         I like designing & building web-applications since some time already.
@@ -87,12 +89,11 @@ const Container = styled.div`
 const Name = styled(Text)`
   font-size: 19px;
 
-  
   &:nth-child(2) {
     margin-top: 10px;
   }
 
-   > ${Highlight}{
+  > ${Highlight} {
     && {
       color: black;
       padding: 0;
