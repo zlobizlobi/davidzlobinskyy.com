@@ -36,17 +36,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-root-import',
-      options: {
-        components: path.join(__dirname, 'src/components'),
-        styles: path.join(__dirname, 'src/styles'),
-        pageStyles: path.join(__dirname, 'src/styles/pageStyles'),
-        utils: path.join(__dirname, 'src/utils'),
-        pages: path.join(__dirname, 'src/pages'),
-        images: path.join(__dirname, 'src/images'),
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,

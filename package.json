@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@react-spring/web": "^9.2.3",
     "@types/styled-components": "^5.0.1",
     "@types/yup": "^0.26.33",
     "babel-plugin-styled-components": "^1.10.7",
