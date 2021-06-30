@@ -55,8 +55,8 @@ const Container = styled.span`
     ${Overlay} {
       opacity: 1;
     }
-    
-    ${media.sm(`
+
+    ${media.md(`
       transform: scale(1.1);
     `)}
   }

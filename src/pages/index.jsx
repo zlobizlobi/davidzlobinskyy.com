@@ -19,12 +19,12 @@ const Section = styled.section`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  max-width: 865px;
+  max-width: 1000px;
   padding: 25px 15px;
   align-items: center;
 
   ${media.xl(`
-    padding: 0px;
+    padding: 0 15px;
   `)};
 `;
 

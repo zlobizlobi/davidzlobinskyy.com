@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Heading from '../components/Heading';
 import Seo from '../components/Seo';
@@ -11,8 +11,6 @@ import { getItemFromImage } from '../utils/getItemFromImage';
 import { graphql } from 'gatsby';
 
 const Work = ({ data }) => {
-  const [faded, setFaded] = useState(false);
-
   const queryObjectWithoutKeys = Object.values(data).map(value => value);
 
   const trail = useTrail(queryObjectWithoutKeys.length, {
@@ -85,7 +83,6 @@ const WorkCardsContainer = styled(Flex)`
     flex-wrap: nowrap;
     justify-content: unset;
   `)}
-  
 `;
 
 export const query = graphql`
@@ -111,6 +108,9 @@ export const query = graphql`
     image7: file(relativePath: { eq: "cvmaker.png" }) {
       ...image
     }
+    image8: file(relativePath: { eq: "ltl.jpg" }) {
+      ...image
+    }
   }
 `;
 
@@ -118,6 +118,7 @@ const StyledHeading = styled(Heading)`
   font-size: 32px;
   font-weight: 900;
   color: #243141;
+  margin-bottom: 10px;
 `;
 
 export const SubHeading = styled(Text)`
@@ -133,8 +134,8 @@ export const SubHeading = styled(Text)`
 const StyledAnimatedContainer = styled(animated.span)`
   margin: 0 0 15px 0;
   width: 100%;
-  transition: transform 0.250ms ease-in-out;
-  
+  transition: transform 0.25ms ease-in-out;
+
   &:hover {
     transform: scale(1.1);
   }
@@ -156,7 +157,7 @@ const Section = styled.section`
   padding: 25px 15px;
 
   ${media.md(`
-    padding: 50px 0px;
+    padding: 0 0 50px 0;
   `)}
 `;
 

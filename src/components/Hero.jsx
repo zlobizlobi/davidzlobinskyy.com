@@ -4,6 +4,8 @@ import { IconContext } from 'react-icons';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { media } from '../styles/media';
 import Text from './Text';
+import Boop from './Boop';
+import { Link } from 'gatsby';
 
 export default function Hero() {
   return (
@@ -42,8 +44,8 @@ export default function Hero() {
         </Biography>
         <Biography>
           Besides that, I travel, meet strangers and shoot{' '}
-          <Highlight>pictures</Highlight> wherever I am with an analogue Minolta
-          X-300.
+          <PageHighlight to="/gallery">pictures</PageHighlight> wherever I am
+          with an analogue Minolta X-300.
           <br />
           <br />
           Also, I play 5-minute blitz chess on{' '}
@@ -51,11 +53,15 @@ export default function Hero() {
         </Biography>
         <IconContainer>
           <a href="https://linkedin.com/in/david-zlobinskyy">
-            <FaLinkedin color="#243141" />
+            <Boop rotation={20}>
+              <FaLinkedin color="#243141" />
+            </Boop>
           </a>
-          <a href="https://github.com/zlobizlobi">
-            <FaGithub color="#243141" />
-          </a>
+          <Boop rotation={20}>
+            <a href="https://github.com/zlobizlobi">
+              <FaGithub color="#243141" />
+            </a>
+          </Boop>
         </IconContainer>
       </Container>
     </IconContext.Provider>
@@ -67,6 +73,15 @@ const Highlight = styled.a.attrs({
   rel: 'noopener noreferrer',
   className: 'highlight',
 })`
+  transition: color 0.2s ease;
+  cursor: pointer;
+  text-decoration: underline;
+  color: #243141;
+  font-weight: 500;
+  letter-spacing: 1px;
+`;
+
+const PageHighlight = styled(Link)`
   transition: color 0.2s ease;
   cursor: pointer;
   text-decoration: underline;

@@ -90,4 +90,8 @@ export const GlobalStyle = createGlobalStyle`
         resize: none;
         min-height: 130px;
     }
+
+    body.using-mouse :focus {
+     outline: none;
+    }
 `;

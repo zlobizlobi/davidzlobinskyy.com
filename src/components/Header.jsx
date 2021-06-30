@@ -43,7 +43,7 @@ export const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  max-width: 900px;
+  max-width: 1000px;
 `;
 
 export const NavList = styled.ul`
@@ -57,6 +57,7 @@ export const IconLink = styled(Link)`
   padding: 15px;
   text-decoration: none;
   color: #243141;
+  letter-spacing: 1px;
 `;
 
 const navLinkCss = css`
@@ -68,6 +69,11 @@ const navLinkCss = css`
   transition: opacity 0.2s ease;
   position: relative;
   color: #405773;
+  letter-spacing: 1px;
+
+  :hover {
+    opacity: 1;
+  }
 
   ${media.xl(`
     &:last-child {

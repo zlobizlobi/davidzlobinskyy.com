@@ -7,28 +7,30 @@ import Form from '../components/Form';
 import Seo from '../components/Seo';
 import Heading from '../components/Heading';
 
-const Contact = ({ data }) => (
-  <>
-    <Seo
-      description="Contact or hire David Zlobinskyy. Submit a question, testimony or evaluation."
-      title="Contact"
-    />
-    <Container>
-      <FormContainer>
-        <Image fluid={data.file.childImageSharp.fluid} />
-        <CTAContainer>
-          <StyledHeading>Contact</StyledHeading>
-          <Subtitle>
-            Want to hire me or ask a question? Write me! I'll try to get back to
-            you within 1 day!{' '}
-            <span style={{ fontSize: '24px', marginLeft: '5px' }}>🚀</span>
-          </Subtitle>
-        </CTAContainer>
-        <Form />
-      </FormContainer>
-    </Container>
-  </>
-);
+const Contact = ({ data }) => {
+  return (
+    <>
+      <Seo
+        description="Contact or hire David Zlobinskyy. Submit a question, testimony or evaluation."
+        title="Contact"
+      />
+      <Container>
+        <FormContainer>
+          <Image fluid={data.file.childImageSharp.fluid} />
+          <CTAContainer>
+            <StyledHeading>Contact</StyledHeading>
+            <Subtitle>
+              Want to hire me or ask a question? Write me! I'll try to get back
+              to you within 1 day!{' '}
+              <span style={{ fontSize: '24px', marginLeft: '5px' }}>🚀</span>
+            </Subtitle>
+          </CTAContainer>
+          <Form />
+        </FormContainer>
+      </Container>
+    </>
+  );
+};
 
 export const query = graphql`
   query Image {
@@ -48,11 +50,12 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  max-width: 865px;
+  max-width: 1000px;
   padding: 50px 15px;
   width: 100%;
+
   ${media.md(`
-    padding: 50px 0;
+    padding: 50px 15px;
   `)};
 `;
 

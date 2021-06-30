@@ -1,7 +1,11 @@
 export const getItemFromImage = src => {
   const splittedArray = src.split('/');
 
+  console.log(src);
+
   const imageReference = splittedArray[splittedArray.length - 1];
+
+  console.log(imageReference);
 
   switch (imageReference) {
     case 'cvmaker.png':

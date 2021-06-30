@@ -41,5 +41,6 @@ module.exports = {
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/display-name': 'off',
+    'react/no-unescaped-entities': 'off',
   },
 };
