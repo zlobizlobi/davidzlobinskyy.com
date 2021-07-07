@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@formspree/react": "^2.2.3",
+    "@radix-ui/react-dialog": "^0.0.19",
     "@react-spring/web": "^9.2.3",
     "@types/styled-components": "^5.0.1",
     "@types/yup": "^0.26.33",

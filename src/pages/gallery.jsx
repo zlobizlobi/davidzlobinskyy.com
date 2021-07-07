@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
 import { graphql } from 'gatsby';
 import Text from '../components/Text';
 import Flex from '../components/Flex';
@@ -10,7 +11,6 @@ import { getGalleryItemFromImage } from '../utils/getGalleryItemFromImage';
 import CloseIcon from '../components/CloseIcon';
 import Boop from '../components/Boop';
 import Seo from '../components/Seo';
-import useScrollLock from '../hooks/useScrollLock';
 import GalleryImage from '../components/GalleryImage';
 
 export default function Gallery({ data }) {
@@ -20,12 +20,8 @@ export default function Gallery({ data }) {
 
   const currentImgSrc = queryObjectWithoutKeys[curImg];
 
-  const modalHasImage = curImg >= 0;
-
-  useScrollLock(modalHasImage);
-
   return (
-    <>
+    <Dialog.Root>
       <Seo
         title="Gallery"
         description="David Zlobinskyy's gallery made with analogue camera's"
@@ -40,90 +36,40 @@ export default function Gallery({ data }) {
             } = queryObjectWithoutKeys[index];
 
             return (
-              <ImageContainer
-                tabIndex={0}
-                key={index}
-                onClick={() => setImg(index)}
-              >
+              <StyledDialogTrigger onClick={() => setImg(index)} key={index}>
                 <GalleryImage fluid={fluid} />
-              </ImageContainer>
+              </StyledDialogTrigger>
             );
           })}
         </ImagesContainer>
       </Container>
-      {currentImgSrc && (
-        <ModalOverlay>
-          <ModalImage
-            imgStyle={{ objectFit: 'contain' }}
-            fluid={currentImgSrc.childImageSharp.fluid}
-          />
-          <ModalImageHeading>
-            {getGalleryItemFromImage(currentImgSrc.childImageSharp.fluid.src)}
-          </ModalImageHeading>
-          <CloseIconContainer onClick={() => setImg(undefined)}>
-            <Boop rotation={30}>
-              <CloseIcon width={42} height={42} />
-            </Boop>
-          </CloseIconContainer>
-        </ModalOverlay>
-      )}
-    </>
+      <StyledDialogOverlay />
+      <StyledDialogContent>
+        {currentImgSrc && (
+          <StyledFlex flexDir="column">
+            <Image
+              imgStyle={{ objectFit: 'contain' }}
+              fluid={currentImgSrc.childImageSharp.fluid}
+            />
+            <ModalImageHeading>
+              {getGalleryItemFromImage(currentImgSrc.childImageSharp.fluid.src)}
+            </ModalImageHeading>
+          </StyledFlex>
+        )}
+        <StyledDialogClose onClick={() => setImg(undefined)}>
+          <Boop rotation={30}>
+            <CloseIcon width={42} height={42} />
+          </Boop>
+        </StyledDialogClose>
+      </StyledDialogContent>
+    </Dialog.Root>
   );
 }
 
-const ModalImageHeading = styled.h3`
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  letter-spacing: 1px;
-  font-weight: 400;
-  position: absolute;
-  bottom: 60px;
-  color: white;
-`;
-
-const CloseIconContainer = styled.button`
-  position: absolute;
+const StyledDialogTrigger = styled(Dialog.Trigger)`
   appearance: none;
-  background-color: transparent;
   border: none;
-  cursor: pointer;
-  top: 30px;
-  right: 30px;
-  z-index: 1000;
-
-  > svg {
-    fill: rgba(255, 255, 255, 0.6);
-  }
-
-  :hover {
-    > svg {
-      fill: white;
-    }
-  }
-`;
-
-const ModalOverlay = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  background-color: rgba(0, 0, 0, 0.4);
-`;
-
-const ModalImage = styled(Image)`
-  width: calc(100% - 80px);
-  height: fit-content;
-
-  ${media.sm(`
-    height: calc(100vh - 80px);
-  `)}
-`;
-const ImageContainer = styled.div`
+  background-color: transparent;
   width: 100%;
   height: 200px;
   margin: 5px;
@@ -136,6 +82,76 @@ const ImageContainer = styled.div`
   ${media.sm(`
       width: 200px;
   `)}
+`;
+
+const StyledFlex = styled(Flex)`
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+`;
+
+const ModalImageHeading = styled(Dialog.Title)`
+  letter-spacing: 1px;
+  font-weight: 400;
+  color: white;
+  width: fit-content;
+  margin: 30px auto 0 auto;
+  text-align: center;
+`;
+
+const StyledDialogContent = styled(Dialog.Content)`
+  min-width: 75%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ${media.xl(`
+     height: 80%;
+     background-color: rgba(0, 0, 0, 0.3);
+     padding: 60px 0;
+  `)}
+`;
+
+const StyledDialogClose = styled(Dialog.Close)`
+  display: none;
+
+  ${media.sm(`
+    display: inline;
+    position: absolute;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    top: 20px;
+    right: 20px;
+
+
+    > svg {
+      fill: rgba(255, 255, 255, 0.6);
+    }
+
+    :hover {
+      > svg {
+        fill: white;
+      }
+    }
+  `)}
+`;
+
+const StyledDialogOverlay = styled(Dialog.Overlay)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
 `;
 
 const ImagesContainer = styled(Flex)`
