@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { animated, useSpring } from 'react-spring';
 import styled from 'styled-components';
 import Image from 'gatsby-image';
-import { Trigger } from '@radix-ui/react-dialog';
 
 export default function GalleryImage(props) {
   const [hovered, setHovered] = useState(false);
