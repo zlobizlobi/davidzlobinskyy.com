@@ -111,7 +111,6 @@ const StyledDialogContent = styled(Dialog.Content)`
 
   ${media.xl(`
      height: 80%;
-     background-color: rgba(0, 0, 0, 0.3);
      padding: 60px 0;
   `)}
 `;
@@ -245,6 +244,15 @@ export const query = graphql`
       ...image
     }
     image15: file(relativePath: { eq: "yannis.jpg" }) {
+      ...image
+    }
+    image16: file(relativePath: { eq: "blueberries.jpg" }) {
+      ...image
+    }
+    image17: file(relativePath: { eq: "harp.jpg" }) {
+      ...image
+    }
+    image18: file(relativePath: { eq: "radio.jpg" }) {
       ...image
     }
   }

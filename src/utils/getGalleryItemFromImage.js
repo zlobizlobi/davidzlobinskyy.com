@@ -8,6 +8,12 @@ export const getGalleryItemFromImage = src => {
   const imageReference = splittedArray[splittedArray.length - 1];
 
   switch (imageReference) {
+    case 'harp.jpg':
+      return 'Middelburg - Lange Jan';
+    case 'blueberries.jpg':
+      return 'Amsterdam - 1800 Roeden';
+    case 'radio.jpg':
+      return 'Middelburg - Thriftshop';
     case 'amsterdam-entrance.jpg':
       return 'Amsterdam - Unknown location';
     case 'brouwersgracht.jpg':
