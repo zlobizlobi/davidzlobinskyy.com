@@ -189,7 +189,7 @@ const SubHeading = styled(Text)`
   `)}
 `;
 
-const image = graphql`
+export const image = graphql`
   fragment image on File {
     childImageSharp {
       fluid(quality: 100) {
