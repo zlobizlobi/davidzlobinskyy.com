@@ -13,7 +13,7 @@ export const media = Object.entries(breakpoints).reduce(
   (acc, [label, size]) => {
     return {
       ...acc,
-      [label]: breakpointCss => css`
+      [label]: (breakpointCss) => css`
         @media (min-width: ${size}px) {
           ${breakpointCss}
         }

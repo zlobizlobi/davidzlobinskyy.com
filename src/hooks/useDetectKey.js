@@ -5,7 +5,7 @@ const useDetectKey = () => {
     const handleMouseDown = () => {
       document.body.classList.add('using-mouse');
     };
-    const handleKeyDown = e => {
+    const handleKeyDown = (e) => {
       if (e.key === '9') {
         document.body.classList.remove('using-mouse');
       }

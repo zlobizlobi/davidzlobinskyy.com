@@ -1,4 +1,4 @@
-export const getGalleryItemFromImage = src => {
+export const getGalleryItemFromImage = (src) => {
   if (!src) {
     return null;
   }

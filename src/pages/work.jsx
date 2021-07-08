@@ -11,7 +11,7 @@ import { getItemFromImage } from '../utils/getItemFromImage';
 import { graphql } from 'gatsby';
 
 const Work = ({ data }) => {
-  const queryObjectWithoutKeys = Object.values(data).map(value => value);
+  const queryObjectWithoutKeys = Object.values(data).map((value) => value);
 
   const trail = useTrail(queryObjectWithoutKeys.length, {
     config: {
@@ -36,11 +36,15 @@ const Work = ({ data }) => {
         <SubHeading>Some of the work I did for people.</SubHeading>
         <WorkCardsContainer>
           {trail.map((style, index) => {
+            console.log(queryObjectWithoutKeys[index]);
+
             const {
-              childImageSharp: { fluid },
+              childImageSharp: { gatsbyImageData },
             } = queryObjectWithoutKeys[index];
 
-            const { href, workInformation } = getItemFromImage(fluid.src);
+            const { href, workInformation, alt } = getItemFromImage(
+              gatsbyImageData.images.fallback.src
+            );
 
             return (
               <StyledAnimatedContainer style={style} key={index}>
@@ -49,9 +53,9 @@ const Work = ({ data }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   key={index}
-                  alt={workInformation}
+                  alt={alt}
                   workInformation={workInformation}
-                  imgSrc={fluid}
+                  imgSrc={gatsbyImageData}
                 />
               </StyledAnimatedContainer>
             );
@@ -65,9 +69,7 @@ const Work = ({ data }) => {
 export const image = graphql`
   fragment image on File {
     childImageSharp {
-      fluid(quality: 100) {
-        ...GatsbyImageSharpFluid_tracedSVG
-      }
+      gatsbyImageData(quality: 100, placeholder: TRACED_SVG, layout: FULL_WIDTH)
     }
   }
 `;
@@ -121,7 +123,7 @@ const StyledHeading = styled(Heading)`
   margin-bottom: 10px;
 `;
 
-export const SubHeading = styled(Text)`
+const SubHeading = styled(Text)`
   color: #243141;
   margin-bottom: 60px;
 

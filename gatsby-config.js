@@ -8,33 +8,14 @@ module.exports = {
     siteUrl: `https://davidzlobinskyy.com`,
   },
   plugins: [
+    `gatsby-plugin-image`,
     `gatsby-plugin-styled-components`,
-    'gatsby-plugin-anchor-links',
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-typescript`,
-    {
-      resolve: 'gatsby-plugin-eslint',
-      options: {
-        test: /\.js$|\.jsx$|\.ts$|\.tsx$/,
-        exclude: /(node_modules|.cache|public)/,
-        stages: ['develop'],
-        options: {
-          emitWarning: true,
-          failOnError: false,
-        },
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-robots-txt',
-      options: {
-        host: 'https://www.davidzlobinskyy.com',
-        sitemap: 'https://www.davidzlobinskyy.com/sitemap.xml',
-        policy: [{ userAgent: '*', allow: ['/', '/contact'] }],
-      },
-    },
+    `gatsby-plugin-eslint`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

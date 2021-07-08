@@ -55,7 +55,7 @@ const Anchor = styled.a`
   color: currentColor;
 `;
 
-export const Button = styled(Link)`
+const Button = styled(Link)`
   padding: 10px 20px;
   background-color: transparent;
   color: #243141;

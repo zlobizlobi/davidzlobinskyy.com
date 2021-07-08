@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
-import { AnchorLink as AnchorLinkComponent } from 'gatsby-plugin-anchor-links';
 import { media } from '../styles/media';
 
 export default function Header() {
@@ -89,12 +88,4 @@ export const NavLink = styled(Link).attrs({
   },
 })`
   ${navLinkCss}
-`;
-
-export const AnchorLink = styled(AnchorLinkComponent)`
-  ${navLinkCss};
-
-  :focus {
-    color: #243141;
-  }
 `;

@@ -6,7 +6,7 @@ import Flex from '../components/Flex';
 import Heading from '../components/Heading';
 import styled from 'styled-components';
 import { media } from '../styles/media';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { getGalleryItemFromImage } from '../utils/getGalleryItemFromImage';
 import CloseIcon from '../components/CloseIcon';
 import Boop from '../components/Boop';
@@ -14,7 +14,7 @@ import Seo from '../components/Seo';
 import GalleryImage from '../components/GalleryImage';
 
 export default function Gallery({ data }) {
-  const queryObjectWithoutKeys = Object.values(data).map(value => value);
+  const queryObjectWithoutKeys = Object.values(data).map((value) => value);
 
   const [curImg, setImg] = useState(undefined);
 
@@ -32,12 +32,12 @@ export default function Gallery({ data }) {
         <ImagesContainer>
           {queryObjectWithoutKeys.map((_, index) => {
             const {
-              childImageSharp: { fluid },
+              childImageSharp: { gatsbyImageData },
             } = queryObjectWithoutKeys[index];
 
             return (
               <StyledDialogTrigger onClick={() => setImg(index)} key={index}>
-                <GalleryImage fluid={fluid} />
+                <GalleryImage image={gatsbyImageData} />
               </StyledDialogTrigger>
             );
           })}
@@ -47,12 +47,14 @@ export default function Gallery({ data }) {
       <StyledDialogContent>
         {currentImgSrc && (
           <StyledFlex flexDir="column">
-            <Image
+            <GatsbyImage
+              image={currentImgSrc.childImageSharp.gatsbyImageData}
               imgStyle={{ objectFit: 'contain' }}
-              fluid={currentImgSrc.childImageSharp.fluid}
             />
             <ModalImageHeading>
-              {getGalleryItemFromImage(currentImgSrc.childImageSharp.fluid.src)}
+              {getGalleryItemFromImage(
+                currentImgSrc.childImageSharp.gatsbyImageData.src
+              )}
             </ModalImageHeading>
           </StyledFlex>
         )}
@@ -190,11 +192,9 @@ const SubHeading = styled(Text)`
 `;
 
 export const image = graphql`
-  fragment image on File {
+  fragment galleryImage on File {
     childImageSharp {
-      fluid(quality: 100) {
-        ...GatsbyImageSharpFluid_tracedSVG
-      }
+      gatsbyImageData(quality: 100, placeholder: TRACED_SVG, layout: FULL_WIDTH)
     }
   }
 `;
@@ -202,58 +202,58 @@ export const image = graphql`
 export const query = graphql`
   query GalleryImages {
     image1: file(relativePath: { eq: "amsterdam-entrance.jpg" }) {
-      ...image
+      ...galleryImage
     }
     image2: file(relativePath: { eq: "brouwersgracht.jpg" }) {
-      ...image
+      ...galleryImage
     }
     image3: file(relativePath: { eq: "de-pijp.jpg" }) {
-      ...image
+      ...galleryImage
     }
     image4: file(relativePath: { eq: "haarlemmerdijk.jpg" }) {
-      ...image
+      ...galleryImage
     }
     image5: file(relativePath: { eq: "haarlemmersluis.jpg" }) {
-      ...image
+      ...galleryImage
     }
     image6: file(relativePath: { eq: "karlovasi.jpg" }) {
-      ...image
+      ...galleryImage
     }
     image7: file(relativePath: { eq: "lijnbaansgracht.jpg" }) {
-      ...image
+      ...galleryImage
     }
     image8: file(relativePath: { eq: "noordermarkt.jpg" }) {
-      ...image
+      ...galleryImage
     }
     image9: file(relativePath: { eq: "potami.jpg" }) {
-      ...image
+      ...galleryImage
     }
     image10: file(relativePath: { eq: "potokaki.jpg" }) {
-      ...image
+      ...galleryImage
     }
     image11: file(relativePath: { eq: "restaurant-potami.jpg" }) {
-      ...image
+      ...galleryImage
     }
     image12: file(relativePath: { eq: "samiopoula.jpg" }) {
-      ...image
+      ...galleryImage
     }
     image13: file(relativePath: { eq: "unknown.jpg" }) {
-      ...image
+      ...galleryImage
     }
     image14: file(relativePath: { eq: "van-baerle-rooftop-party.jpg" }) {
-      ...image
+      ...galleryImage
     }
     image15: file(relativePath: { eq: "yannis.jpg" }) {
-      ...image
+      ...galleryImage
     }
     image16: file(relativePath: { eq: "blueberries.jpg" }) {
-      ...image
+      ...galleryImage
     }
     image17: file(relativePath: { eq: "harp.jpg" }) {
-      ...image
+      ...galleryImage
     }
     image18: file(relativePath: { eq: "radio.jpg" }) {
-      ...image
+      ...galleryImage
     }
   }
 `;

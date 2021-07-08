@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import { media } from '../styles/media';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import Form from '../components/Form';
 import Seo from '../components/Seo';
 import Heading from '../components/Heading';
@@ -16,7 +16,10 @@ const Contact = ({ data }) => {
       />
       <Container>
         <FormContainer>
-          <Image fluid={data.file.childImageSharp.fluid} />
+          <Image
+            alt="David Zlobinskyy"
+            image={data.file.childImageSharp.gatsbyImageData}
+          />
           <CTAContainer>
             <StyledHeading>Contact</StyledHeading>
             <Subtitle>
@@ -36,9 +39,11 @@ export const query = graphql`
   query Image {
     file(relativePath: { eq: "me.jpg" }) {
       childImageSharp {
-        fluid(quality: 100) {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
+        gatsbyImageData(
+          quality: 100
+          placeholder: TRACED_SVG
+          layout: FULL_WIDTH
+        )
       }
     }
   }
@@ -88,7 +93,7 @@ const StyledHeading = styled(Heading)`
   color: #243141;
 `;
 
-const Image = styled(Img)`
+const Image = styled(GatsbyImage)`
   width: 150px;
   height: 150px;
   align-self: flex-end;

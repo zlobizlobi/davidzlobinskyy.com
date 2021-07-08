@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { animated, useSpring } from 'react-spring';
 import styled from 'styled-components';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 export default function GalleryImage(props) {
   const [hovered, setHovered] = useState(false);
@@ -28,7 +28,7 @@ export default function GalleryImage(props) {
   );
 }
 
-const StyledImage = styled(Image)`
+const StyledImage = styled(GatsbyImage)`
   width: 100%;
   height: 100%;
 `;

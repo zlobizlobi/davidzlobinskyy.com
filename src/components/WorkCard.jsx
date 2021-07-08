@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import Text from './Text';
-import ImgComponent from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { media } from '../styles/media';
 
-export default function WorkCard({ imgSrc, workInformation, ...props }) {
+export default function WorkCard({ imgSrc, workInformation, alt, ...props }) {
   return (
     <a {...props}>
       <Container>
-        <Img fluid={imgSrc} />
+        <Img alt={alt} image={imgSrc} />
         <Overlay>
           <StyledText>{workInformation}</StyledText>
         </Overlay>
@@ -62,7 +62,7 @@ const Container = styled.span`
   }
 `;
 
-const Img = styled(ImgComponent).attrs({
+const Img = styled(GatsbyImage).attrs({
   imgStyle: {
     objectFit: 'contain',
   },
