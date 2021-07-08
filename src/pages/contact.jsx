@@ -59,19 +59,19 @@ const Container = styled.section`
   `)};
 `;
 
-export const FormContainer = styled.div`
+const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   border: none;
 `;
 
-export const CTAContainer = styled.span`
+const CTAContainer = styled.span`
   margin: 20px 0 50px 0;
   align-self: flex-start;
 `;
 
-export const Subtitle = styled(Heading)`
+const Subtitle = styled(Heading)`
   && {
     color: #243141;
     font-size: 18px;
@@ -81,14 +81,14 @@ export const Subtitle = styled(Heading)`
   }
 `;
 
-export const StyledHeading = styled(Heading)`
+const StyledHeading = styled(Heading)`
   font-weight: 900;
   font-size: 32px;
   margin-bottom: 10px;
   color: #243141;
 `;
 
-export const Image = styled(Img)`
+const Image = styled(Img)`
   width: 150px;
   height: 150px;
   align-self: flex-end;
