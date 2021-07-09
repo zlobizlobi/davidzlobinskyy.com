@@ -36,8 +36,6 @@ const Work = ({ data }) => {
         <SubHeading>Some of the work I did for people.</SubHeading>
         <WorkCardsContainer>
           {trail.map((style, index) => {
-            console.log(queryObjectWithoutKeys[index]);
-
             const {
               childImageSharp: { gatsbyImageData },
             } = queryObjectWithoutKeys[index];

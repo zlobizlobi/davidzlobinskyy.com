@@ -53,7 +53,8 @@ export default function Gallery({ data }) {
             />
             <ModalImageHeading>
               {getGalleryItemFromImage(
-                currentImgSrc.childImageSharp.gatsbyImageData.src
+                currentImgSrc.childImageSharp.gatsbyImageData.images.fallback
+                  .src
               )}
             </ModalImageHeading>
           </StyledFlex>
